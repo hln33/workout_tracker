@@ -1,4 +1,5 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, Modal, StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
     centeredView: {
@@ -24,20 +25,26 @@ const styles = StyleSheet.create({
     },
 });
 
-interface Props {
-  setVisible: (status: boolean) => void
-}
+export const ExerciseInput = () => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-export const ExerciseInput = (props: Props) => {
   return (
-    <View style={styles.centeredView}>
-      <View style={styles.modalView}>
-        <Text>Input Please</Text>
-        <Button 
-          title="Close"
-          onPress={() => props.setVisible(false)}
-        />
-      </View>
-    </View>
+    <>
+      <Button 
+        title="Add Exercise"
+        onPress={() => setModalVisible(true)}
+      />
+      <Modal visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text>Input Please</Text>
+            <Button 
+              title="Close"
+              onPress={() => setModalVisible(false)}
+            />
+          </View>
+        </View>
+      </Modal>
+    </>
   );
 }
