@@ -18,7 +18,7 @@ export const Home = ({navigation}: props) => {
     <View style={styles.container}>
       <Text>Workout Tracker</Text>
       <StatusBar style="auto" />
-      <Button title="Start a Workout" onPress={() => Alert.alert('To Do')} />
+      <Button title="Start a Workout" onPress={() => navigation.navigate('Workout')} />
       <Button title="Profile" onPress={() => navigation.navigate('Profile')} />
       <Button title="History" onPress={() => navigation.navigate('History')} />
     </View>
