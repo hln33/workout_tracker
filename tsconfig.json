@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["."],
+      "@Components": [
+        "./src/components/index"
+      ],
+      "@Contexts": [
+        "./src/contexts/index"
+      ],
+      "@Hooks": [
+        "./src/hooks/index",
+      ],
+      "@Navigation": [
+        "./src/navigation/index"
+      ],
+      "@Types": [
+        "./src/types.tsx"
+      ],
+      "@Services": [
+        "./src/services/index"
+      ],
+      "@Utils": [
+        "./src/utils/index"
+      ]
+    },
+    "strict": true
+  },
+  "extends": "@tsconfig/react-native/tsconfig.json"
+}
