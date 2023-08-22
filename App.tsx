@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  pressed = () => {
-    alert("hi");
+  const pressed = () => {
+    Alert.alert("hi");
   }
 
   return (
