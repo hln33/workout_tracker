@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
+import { Button, Modal, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const styles = StyleSheet.create({
     centeredView: {
@@ -27,24 +27,43 @@ const styles = StyleSheet.create({
 
 export const ExerciseInput = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [name, setName] = useState('');
+  const [sets, setSets] = useState(0);
+  const [reps, setReps] = useState(0);
 
   return (
     <>
       <Button 
-        title="Add Exercise"
+        title='Add Exercise'
         onPress={() => setModalVisible(true)}
       />
+
       <Modal visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text>Input Please</Text>
+            <Text>New Exercise</Text>
+            <TextInput 
+              placeholder='Name'
+              onChangeText={(e) => setName(e)}
+            />
+            <TextInput 
+              placeholder='Sets'
+              keyboardType='numeric'
+              onChangeText={(e) => setSets(Number(e))}
+            />
+            <TextInput 
+              placeholder='Reps'
+              keyboardType='numeric'
+              onChangeText={(e) => setReps(Number(e))}
+            />
             <Button 
-              title="Close"
+              title='Close'
               onPress={() => setModalVisible(false)}
             />
           </View>
         </View>
       </Modal>
+
     </>
   );
 }

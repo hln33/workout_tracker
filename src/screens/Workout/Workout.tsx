@@ -9,17 +9,17 @@ export const Workout = () => {
   return (
     <>
       <TextInput 
-        placeholder="Workout Name"
-        onChangeText={input => setWorkoutName(input)}
+        placeholder='Workout Name'
+        onChangeText={e => setWorkoutName(e)}
       />
       <TextInput 
         multiline={true}
-        placeholder="Notes"
-        onChangeText={input => setNotes(input)}
+        placeholder='Notes'
+        onChangeText={e => setNotes(e)}
       />
       <ExerciseInput />
 
-      <Button title="Finish" />
+      <Button title='Finish' />
     </>
   );
 }
