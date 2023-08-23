@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { InputDialog } from '../../components'
+import { Exercise } from '../../../types'
 
 
-export const ExerciseInput = () => {
+interface Props {
+  onAdd: (exercise: Exercise) => void;
+}
+export const ExerciseInput = (props: Props) => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState('');
   const [sets, setSets] = useState(0);
@@ -28,6 +32,13 @@ export const ExerciseInput = () => {
           onChangeText={(e) => setReps(Number(e))}
         />
 
+        <Button 
+          title='Add' 
+          onPress={() => {
+            props.onAdd({name: 'squat', sets: 5, reps: 5});
+            setVisible(false)
+          }} 
+        />
         <Button title='Close' onPress={() => setVisible(false)} />
       </InputDialog>
     </>

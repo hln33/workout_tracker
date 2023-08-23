@@ -4,3 +4,9 @@ export type StackParamList = {
     Profile: undefined;
     Workout: undefined;
 };
+
+export type Exercise = {
+  name: string;
+  sets: number;
+  reps: number;
+}
