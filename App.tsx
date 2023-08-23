@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { History, Home, Profile, Workout } from './src/screens'
 import { StackParamList } from './types';
 
+
 const Stack = createNativeStackNavigator<StackParamList>();
 const App = () => {
   return (
