@@ -3,7 +3,6 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StackParamList } from '../../types'
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -26,4 +25,3 @@ export const Home = ({navigation}: props) => {
     </View>
   );
 }
-  

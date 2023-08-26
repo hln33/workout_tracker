@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Alert, Button, FlatList, Text, TextInput, View } from 'react-native';
-import { ExerciseInput } from './ExerciseInput';
+import { Button, FlatList, Text, TextInput, View } from 'react-native';
 import { Exercise } from '../../../types';
+import { ExerciseDisplay, ExerciseInput } from './index';
 
 
 export const Workout = () => {
@@ -18,15 +18,10 @@ export const Workout = () => {
         onChangeText={e => setNotes(e)}
       />
       <ExerciseInput onAdd={(exercise: Exercise) => setExercises([...exercises, exercise])}/>
-
+      
       <FlatList
         data={exercises}
-        renderItem={({item}) => 
-          <>
-            <Text>{item.name}</Text>
-            <Text>{item.sets}x{item.reps}</Text>
-          </>
-        }
+        renderItem={({item}) => <ExerciseDisplay name={item.name} sets={item.sets} reps={item.reps} />}
       />
 
       <Button title='Finish' />
