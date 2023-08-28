@@ -7,4 +7,4 @@ export const Profile = () => {
       <Text>Profile</Text>
     </>
   );
-}
+};

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
 import { Exercise } from '../../../types';
-import { ExerciseDisplay, ExerciseInput } from './index';
+import { ExerciseInput } from './index';
+import { ExerciseDisplay } from './ExerciseDisplay/index';
 
 
 export const Workout = () => {
