@@ -1,16 +1,19 @@
-import { TextInput } from 'react-native';
+import { TextInput, Text, View, ViewStyle } from 'react-native';
 
 
 interface Props {
+  style: ViewStyle
   placeholder: number;
   onChangeText: (e: number) => void;
 }
 export const NumericInput = (props: Props) => {
   return (
-    <TextInput 
-      placeholder={props.placeholder.toString()}
-      keyboardType='numeric'
-      onChangeText={e => props.onChangeText(Number(e))}
-    />
+    <View style={props.style}>
+      <TextInput 
+        placeholder={props.placeholder.toString()}
+        keyboardType='numeric'
+        onChangeText={e => props.onChangeText(Number(e))}
+      />
+    </View>
   );
 };

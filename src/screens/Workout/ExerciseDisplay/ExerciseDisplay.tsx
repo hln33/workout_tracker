@@ -5,15 +5,21 @@ import { Set } from '../../../../types'
 
 
 interface Props {
-  name: string,
-  sets: Set[]
-}
+  name: string;
+  sets: Set[];
+};
 export const ExerciseDisplay = (props: Props) => {
   const [sets, setSets] = useState(props.sets);
 
   return (
     <>
-      <Text>{props.name}:</Text> 
+      <Text>{props.name}</Text>
+
+      <View style={{flexDirection: 'row'}}>
+        <Text style={{flex: 1}}>Weight: </Text>
+        <Text style={{flex: 1}}>Reps: </Text>
+      </View>
+
       <FlatList
         data={sets}
         renderItem={({item}) => <SetDisplay set={item}/>}
@@ -25,4 +31,4 @@ export const ExerciseDisplay = (props: Props) => {
       />
     </>
   );
-}
+};
