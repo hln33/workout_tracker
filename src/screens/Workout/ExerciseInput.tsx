@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import { InputDialog } from '../../components'
-import { Exercise } from '../../../types'
+import { Exercise } from './types'
 
 
 const sets = [{lbs: 225, reps: 5}]

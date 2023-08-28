@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
 import { SetDisplay } from './index';
-import { Set } from '../../../../types'
+import { Set } from '../types'
 
 
 interface Props {
@@ -16,13 +16,14 @@ export const ExerciseDisplay = (props: Props) => {
       <Text>{props.name}</Text>
 
       <View style={{flexDirection: 'row'}}>
-        <Text style={{flex: 1}}>Weight: </Text>
-        <Text style={{flex: 1}}>Reps: </Text>
+        <Text style={{flex: 1}}>Set:</Text>
+        <Text style={{flex: 1}}>Weight:</Text>
+        <Text style={{flex: 1}}>Reps:</Text>
       </View>
 
       <FlatList
         data={sets}
-        renderItem={({item}) => <SetDisplay set={item}/>}
+        renderItem={({item, index}) => <SetDisplay index={index} set={item}/>}
       />
 
       <Button 

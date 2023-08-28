@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StackParamList } from '../../types'
+import { StackParamList } from './Workout/types'
 
 const styles = StyleSheet.create({
   container: {
