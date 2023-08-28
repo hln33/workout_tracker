@@ -11,6 +11,7 @@ export type Exercise = {
 }
 
 export type Set = {
+  id: number;
   lbs: number;
   reps: number;
 }

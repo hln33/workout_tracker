@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, FlatList, Text, TextInput, View } from 'react-native';
+import { Alert, Button, FlatList, Text, TextInput, View } from 'react-native';
 import { SetDisplay } from './index';
 import { Set } from '../types'
 
@@ -10,6 +10,15 @@ interface Props {
 };
 export const ExerciseDisplay = (props: Props) => {
   const [sets, setSets] = useState(props.sets);
+  const onSetDelete = (id: number) => {
+    let updatedSets = [...sets];
+    updatedSets = updatedSets.filter(set => set.id !== id);
+    updatedSets.forEach((set, newId) => {
+      set.id = newId;
+    });
+    
+    setSets(updatedSets);
+  };
 
   return (
     <>
@@ -23,12 +32,12 @@ export const ExerciseDisplay = (props: Props) => {
 
       <FlatList
         data={sets}
-        renderItem={({item, index}) => <SetDisplay index={index} set={item}/>}
+        renderItem={({item}) => <SetDisplay set={item} onDelete={id => onSetDelete(id)}/>}
       />
 
       <Button 
         title='Add Set'
-        onPress={() => setSets([...sets, {lbs: 0, reps: 0}])}
+        onPress={() => setSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}
       />
     </>
   );

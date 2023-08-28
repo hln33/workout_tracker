@@ -4,11 +4,9 @@ import { InputDialog } from '../../components'
 import { Exercise } from './types'
 
 
-const sets = [{lbs: 225, reps: 5}]
-
 interface Props {
   onAdd: (exercise: Exercise) => void;
-}
+};
 export const ExerciseInput = (props: Props) => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState('');
@@ -23,8 +21,8 @@ export const ExerciseInput = (props: Props) => {
         <Button 
           title='Add' 
           onPress={() => {
-            props.onAdd({name: name, sets: sets});
-            setVisible(false)
+            props.onAdd({name: name, sets: [{id: 0, lbs: 0, reps: 0}]});
+            setVisible(false);
           }} 
         />
         <Button title='Close' onPress={() => setVisible(false)} />
