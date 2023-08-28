@@ -21,7 +21,7 @@ export const Workout = () => {
       
       <FlatList
         data={exercises}
-        renderItem={({item}) => <ExerciseDisplay name={item.name} sets={item.sets} reps={item.reps} />}
+        renderItem={({item}) => <ExerciseDisplay name={item.name} sets={item.sets} />}
       />
 
       <Button title='Finish' />

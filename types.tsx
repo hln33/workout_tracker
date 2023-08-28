@@ -7,6 +7,10 @@ export type StackParamList = {
 
 export type Exercise = {
   name: string;
-  sets: number;
+  sets: Set[];
+}
+
+export type Set = {
+  lbs: number;
   reps: number;
 }

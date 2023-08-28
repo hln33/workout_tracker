@@ -4,14 +4,14 @@ import { InputDialog } from '../../components'
 import { Exercise } from '../../../types'
 
 
+const sets = [{lbs: 225, reps: 5}]
+
 interface Props {
   onAdd: (exercise: Exercise) => void;
 }
 export const ExerciseInput = (props: Props) => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState('');
-  const [sets, setSets] = useState(0);
-  const [reps, setReps] = useState(0);
 
   return (
     <>
@@ -19,23 +19,11 @@ export const ExerciseInput = (props: Props) => {
 
       <InputDialog visible={visible}>
         <Text>New Exercise</Text>
-
         <TextInput placeholder='Name' onChangeText={(e) => setName(e)} />
-        <TextInput 
-          placeholder='Sets'
-          keyboardType='numeric'
-          onChangeText={(e) => setSets(Number(e))}
-        />
-        <TextInput 
-          placeholder='Reps'
-          keyboardType='numeric'
-          onChangeText={(e) => setReps(Number(e))}
-        />
-
         <Button 
           title='Add' 
           onPress={() => {
-            props.onAdd({name: name, sets: sets, reps: reps});
+            props.onAdd({name: name, sets: sets});
             setVisible(false)
           }} 
         />
