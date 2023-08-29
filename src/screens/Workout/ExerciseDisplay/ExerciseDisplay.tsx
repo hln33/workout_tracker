@@ -10,14 +10,20 @@ interface Props {
 };
 export const ExerciseDisplay = (props: Props) => {
   const [sets, setSets] = useState(props.sets);
+
   const onSetDelete = (id: number) => {
     let updatedSets = [...sets];
     updatedSets = updatedSets.filter(set => set.id !== id);
     updatedSets.forEach((set, newId) => {
       set.id = newId;
     });
-    
     setSets(updatedSets);
+  };
+  const onSetUpdate = (id: number, newLbs: number, newReps: number) => {
+    console.log(sets);
+    setSets(sets.map(set => {
+      return (set.id === id) ? {...set, lbs: newLbs, reps: newReps} : set
+    }));
   };
 
   return (
@@ -32,7 +38,13 @@ export const ExerciseDisplay = (props: Props) => {
 
       <FlatList
         data={sets}
-        renderItem={({item}) => <SetDisplay set={item} onDelete={id => onSetDelete(id)}/>}
+        renderItem={({item}) =>
+          <SetDisplay 
+            set={item} 
+            onDelete={id => onSetDelete(id)} 
+            onUpdate={(id, lbs, reps) => onSetUpdate(id, lbs, reps)} 
+          />
+        }
       />
 
       <Button 
