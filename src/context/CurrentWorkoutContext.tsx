@@ -4,11 +4,13 @@ import { Workout } from "../types";
 type CurrentWorkoutContextType = {
   workout: Workout | null;
   setWorkout: (workout: Workout) => void;
-}
-const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
+};
+
+
+export const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
   workout: null,
   setWorkout: () => null
-})
+});
 
 
 interface Props {

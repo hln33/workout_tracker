@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, FlatList, Text, View } from 'react-native';
 import { SetDisplay } from './index';
-import { Set } from '../types'
+import { Set } from '../../../types'
 
 
 interface Props {
