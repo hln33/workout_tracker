@@ -9,7 +9,6 @@ import { ExerciseDisplay } from './ExerciseDisplay/index';
 export const Workout = () => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
   const [notes, setNotes] = useState('');
-  // console.log(workout);
 
   const { name, exercises } = workout;
   return (
@@ -24,7 +23,7 @@ export const Workout = () => {
       
       <FlatList
         data={exercises}
-        renderItem={({item}) => <ExerciseDisplay name={item.name} sets={item.sets} />}
+        renderItem={({item}) => <ExerciseDisplay name={item.name} />}
       />
 
       <Button title='Finish' />

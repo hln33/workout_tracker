@@ -4,7 +4,7 @@ import { TextInput, Text, View, ViewStyle } from 'react-native';
 interface Props {
   style: ViewStyle
   placeholder: number;
-  onEndEditing: (e: number) => void;
+  onChangeText: (e: number) => void;
 }
 export const NumericInput = (props: Props) => {
   return (
@@ -12,8 +12,11 @@ export const NumericInput = (props: Props) => {
       <TextInput 
         placeholder={props.placeholder.toString()}
         keyboardType='numeric'
-        onEndEditing={e => props.onEndEditing(Number(e))}
+        onChangeText={e => {
+          console.log(e);
+          props.onChangeText(parseInt(e));
+        }}
       />
     </View>
-  );
+  )
 };
