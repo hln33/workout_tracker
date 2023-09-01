@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
 import { NumericInput, DeleteButton } from '../../../components/index';
-import { Set } from '../types';
+import { Set } from '../../../types';
 
 
 interface Props {
@@ -19,7 +19,7 @@ export const SetDisplay = (props: Props) => {
   };
   const onUpdate = () => {
     props.onUpdate(id, weight, reps);
-  };
+};
 
   return (
     <View style={{flexDirection: 'row'}}>

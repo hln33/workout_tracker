@@ -1,4 +1,4 @@
-import {Modal, StyleSheet, View } from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
 
 const styles = StyleSheet.create({
   centeredView: {
