@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Button, FlatList, Text, View } from 'react-native';
+import { CurrentWorkoutContext } from '../../../context/CurrentWorkoutContext';
 import { SetDisplay } from './index';
 import { Set } from '../../../types'
 
@@ -9,7 +10,15 @@ interface Props {
   sets: Set[];
 };
 export const ExerciseDisplay = (props: Props) => {
-  const [sets, setSets] = useState(props.sets);
+  const { workout, setWorkout } = useContext(CurrentWorkoutContext);
+  const exercise = workout.exercises.find(e => e.name === props.name);
+  const sets = exercise?.sets ?? [];
+  console.log(exercise);
+
+  const updateWorkoutSets = (updatedSets: Set[]) => {
+    let updatedExercises = workout.exercises.map(e => e.name === props.name ? {...e, sets: updatedSets} : e);
+    setWorkout({ ...workout, exercises: updatedExercises });
+  }
 
   const onSetDelete = (id: number) => {
     let updatedSets = [...sets];
@@ -17,13 +26,11 @@ export const ExerciseDisplay = (props: Props) => {
     updatedSets.forEach((set, newId) => {
       set.id = newId;
     });
-    setSets(updatedSets);
+    updateWorkoutSets(updatedSets)
   };
   const onSetUpdate = (id: number, newLbs: number, newReps: number) => {
-    console.log(sets);
-    setSets(sets.map(set => {
-      return (set.id === id) ? {...set, lbs: newLbs, reps: newReps} : set;
-    }));
+    let updatedSets = sets.map(s => (s.id === id) ? {...s, lbs: newLbs, reps: newReps} : s);
+    updateWorkoutSets(updatedSets);
   };
 
   return (
@@ -47,9 +54,17 @@ export const ExerciseDisplay = (props: Props) => {
         }
       />
 
-      <Button 
+      {/* <Button 
         title='Add Set'
         onPress={() => setSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}
+      /> */}
+
+      <Button 
+        title='Add Set'
+        onPress={() => {
+          let updatedSets = [...sets, {id: sets.length, lbs: 0, reps: 0}];
+          updateWorkoutSets(updatedSets)
+        }}
       />
     </>
   );

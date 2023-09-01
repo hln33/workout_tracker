@@ -9,7 +9,7 @@ import { ExerciseDisplay } from './ExerciseDisplay/index';
 export const Workout = () => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
   const [notes, setNotes] = useState('');
-  console.log(workout);
+  // console.log(workout);
 
   const { name, exercises } = workout;
   return (
