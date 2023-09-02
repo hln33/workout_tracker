@@ -8,16 +8,15 @@ import { ExerciseDisplay } from './ExerciseDisplay/index';
 
 export const Workout = () => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
-  const [notes, setNotes] = useState('');
-
-  const { name, exercises } = workout;
+  const { name, notes, exercises } = workout;
+  
   return (
     <>
-      <TextInput placeholder='Workout Name' onChangeText={newName => setWorkout({ ...workout, name: newName })} />
+      <TextInput placeholder={name} onChangeText={newName => setWorkout({ ...workout, name: newName })} />
       <TextInput 
         multiline={true}
-        placeholder='Notes'
-        onChangeText={e => setNotes(e)}
+        placeholder={notes}
+        onChangeText={e => setWorkout({ ...workout, notes: e })}
       />
       <ExerciseInput onAdd={(exercise: Exercise) => setWorkout({ ...workout, exercises: [...exercises, exercise]})} />
       
@@ -27,7 +26,6 @@ export const Workout = () => {
       />
 
       <Button title='Finish' />
-      <Button title='Save' onPress={() => setWorkout({name: name, exercises: exercises})} />
     </>
   );
 };

@@ -10,12 +10,12 @@ interface Props {
 };
 export const ExerciseDisplay = (props: Props) => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
-  const sets = getCurrentWorkoutSets(workout, props.name);
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.name ? {...e, sets: updatedSets} : e);
     setWorkout({ ...workout, exercises: updatedExercises });
   };
 
+  const sets = getCurrentWorkoutSets(workout, props.name);
   return (
     <>
       <Text>{props.name}</Text>

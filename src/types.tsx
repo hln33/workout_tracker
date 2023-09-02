@@ -7,7 +7,8 @@ export type StackParamList = {
 
 export type Workout = {
   name: string;
-  exercises: Exercise[]
+  exercises: Exercise[];
+  notes: string;
 };
 
 export type Exercise = {
