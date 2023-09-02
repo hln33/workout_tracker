@@ -1,8 +1,15 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Text, View } from 'react-native';
 import { NumericInput, DeleteButton } from '../../../components/index';
 import { CurrentWorkoutContext, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
+
+
+const getState = (set: Set | undefined) => {
+  const weight = set ? set.lbs : 0;
+  const reps = set ? set.reps : 0;
+  return { weight, reps };
+};
 
 
 interface Props {
@@ -11,23 +18,13 @@ interface Props {
 };
 export const SetDisplay = (props: Props) => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
-
-  const id = props.set.id;
-  const sets = getCurrentWorkoutSets(workout, props.exerciseName);
-  const set = sets.find(s => s.id === id);
-
-  let weight = 0;
-  let reps = 0;
-  if (set !== undefined) {
-    weight = set.lbs;
-    reps = set.reps;
-  }
-
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.exerciseName ? {...e, sets: updatedSets} : e);
     setWorkout({ ...workout, exercises: updatedExercises });
   };
 
+  const id = props.set.id;
+  const sets = getCurrentWorkoutSets(workout, props.exerciseName);
   const onDelete = () => {
     let updatedSets = [...sets].filter(set => set.id !== id);
     updatedSets.forEach((set, newId) => set.id = newId);
@@ -42,6 +39,7 @@ export const SetDisplay = (props: Props) => {
     updateWorkoutSets(updatedSets);
   };
 
+  const { weight, reps } = getState(sets.find(s => s.id === id));
   return (
     <View style={{flexDirection: 'row'}}>
       <Text style={{flex: 1}}>{id + 1}</Text>
