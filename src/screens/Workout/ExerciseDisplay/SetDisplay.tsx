@@ -20,6 +20,8 @@ export const SetDisplay = (props: Props) => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.exerciseName ? {...e, sets: updatedSets} : e);
+    updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
+
     setWorkout({ ...workout, exercises: updatedExercises });
   };
 

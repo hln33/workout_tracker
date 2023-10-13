@@ -2,7 +2,7 @@ import React, { createContext, ReactNode, useState } from "react";
 import { Workout } from "../types";
 
 
-const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: []}
+const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: [], duration_s: 0};
 
 type CurrentWorkoutContextType = {
   workout: Workout;
