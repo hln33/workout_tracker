@@ -1,8 +1,25 @@
 import { useContext } from 'react';
-import { Button, FlatList, Text, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import { SetDisplay } from './index';
 import { CurrentWorkoutContext, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
+
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    paddingBottom: 10,
+    color: 'cadetblue'
+  },
+  headerRow: {
+    flexDirection: 'row',
+    paddingBottom: 10
+  },
+  column: {
+    flex: 1,
+    fontWeight: 'bold'
+  }
+});
 
 
 interface Props {
@@ -17,12 +34,12 @@ export const ExerciseDisplay = (props: Props) => {
 
   const sets = getCurrentWorkoutSets(workout, props.name);
   return (
-    <>
-      <Text>{props.name}</Text>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={{flex: 1}}>Set:</Text>
-        <Text style={{flex: 1}}>Weight:</Text>
-        <Text style={{flex: 1}}>Reps:</Text>
+    <View style={{padding: 12.5}}>
+      <Text style={styles.title}>{props.name}</Text>
+      <View style={styles.headerRow}>
+        <Text style={styles.column}>Set:</Text>
+        <Text style={styles.column}>Weight:</Text>
+        <Text style={styles.column}>Reps:</Text>
       </View>
 
       <FlatList
@@ -37,6 +54,6 @@ export const ExerciseDisplay = (props: Props) => {
           updateWorkoutSets(updatedSets);
         }}
       />
-    </>
+    </View>
   );
 };
