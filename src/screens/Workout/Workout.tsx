@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Button, FlatList, Text, TextInput, View } from 'react-native';
+import { FlatList, TextInput, View } from 'react-native';
 import { CurrentWorkoutContext } from '../../context/CurrentWorkoutContext';
 import { Exercise } from '../../types';
 import { ExerciseInput, Timer } from './index';
@@ -11,23 +11,24 @@ export const Workout = () => {
   const { name, notes, exercises } = workout;
 
   return (
-    <>
-      <Timer />
+    <View>
+      {/* <Timer /> */}
 
       <TextInput placeholder={name} onChangeText={newName => setWorkout({ ...workout, name: newName })} />
       <TextInput 
         multiline={true}
         placeholder={notes}
         onChangeText={e => setWorkout({ ...workout, notes: e })}
-      />
-      <ExerciseInput onAdd={(exer: Exercise) => setWorkout({ ...workout, exercises: [...exercises, exer] })} />
-      
+      />      
       <FlatList
         data={exercises}
         renderItem={({item}) => <ExerciseDisplay name={item.name} />}
       />
 
-      <Button title='Finish' />
-    </>
+      <ExerciseInput 
+        style={{paddingHorizontal: 12.5}} 
+        onAdd={(exer: Exercise) => setWorkout({ ...workout, exercises: [...exercises, exer] })} 
+      />
+    </View>
   );
 };

@@ -1,19 +1,40 @@
 import { useState } from 'react';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
+import { StyleProp } from 'react-native';
 import { Button, Text, TextInput, View } from 'react-native';
 import { InputDialog } from '../../components'
 import { Exercise } from '../../types'
 
 
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    borderRadius: 15,
+    backgroundColor: 'mintcream'
+  },
+  buttonText: {
+    color: 'skyblue',
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+});
+
+
 interface Props {
   onAdd: (exercise: Exercise) => void;
+  style?: StyleProp<ViewStyle>;
 };
 export const ExerciseInput = (props: Props) => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState('');
 
   return (
-    <>
-      <Button title='Add Exercise' onPress={() => setVisible(true)}/>
+    <View style={props.style}>
+      <Pressable style={styles.button} onPress={() => setVisible(true)}>
+        <Text style={styles.buttonText}>Add Exercise</Text>
+      </Pressable>
 
       <InputDialog visible={visible}>
         <Text>New Exercise</Text>
@@ -27,6 +48,6 @@ export const ExerciseInput = (props: Props) => {
         />
         <Button title='Close' onPress={() => setVisible(false)} />
       </InputDialog>
-    </>
+    </View>
   );
 }
