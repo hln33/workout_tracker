@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import { FlatList, TextInput, View } from 'react-native';
-import { CurrentWorkoutContext } from '../../context/CurrentWorkoutContext';
+import { useCurrentWorkout } from '../../context/CurrentWorkoutContext';
 import { Exercise } from '../../types';
 import { ExerciseInput, Timer } from './index';
 import { ExerciseDisplay } from './ExerciseDisplay/index';
@@ -10,6 +9,9 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   workout: {
     padding: 20
+  },
+  exerciseList: {
+    paddingVertical: 10
   },
   exercise: {
     paddingVertical: 10
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
 
 
 export const Workout = () => {
-  const { workout, setWorkout } = useContext(CurrentWorkoutContext);
+  const { workout, setWorkout } = useCurrentWorkout();
   const { name, notes, exercises } = workout;
 
   return (
@@ -35,6 +37,7 @@ export const Workout = () => {
         onChangeText={e => setWorkout({ ...workout, notes: e })}
       />      
       <FlatList
+        style={styles.exerciseList}
         data={exercises}
         renderItem={({item}) => <ExerciseDisplay style={styles.exercise} name={item.name} />}
       />

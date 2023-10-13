@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NumericInput, DeleteButton } from '../../../components/index';
-import { CurrentWorkoutContext, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
+import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
 
 
@@ -21,7 +21,7 @@ interface Props {
   set: Set;
 };
 export const SetDisplay = (props: Props) => {
-  const { workout, setWorkout } = useContext(CurrentWorkoutContext);
+  const { workout, setWorkout } = useCurrentWorkout();
   const getState = (set: Set | undefined) => {
     const weight = set ? set.lbs : 0;
     const reps = set ? set.reps : 0;

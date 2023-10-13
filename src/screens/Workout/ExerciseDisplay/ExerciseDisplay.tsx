@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { FlatList, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
 import { AddButton } from '../../../components';
-import { CurrentWorkoutContext, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
+import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
 
@@ -36,7 +36,7 @@ interface Props {
   style?: StyleProp<ViewStyle>
 };
 export const ExerciseDisplay = (props: Props) => {
-  const { workout, setWorkout } = useContext(CurrentWorkoutContext);
+  const { workout, setWorkout } = useCurrentWorkout();
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.name ? {...e, sets: updatedSets} : e);
     setWorkout({ ...workout, exercises: updatedExercises });

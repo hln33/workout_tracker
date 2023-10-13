@@ -1,14 +1,16 @@
 import React, { createContext, ReactNode, useState } from "react";
+import { useContext } from "react";
 import { Workout } from "../types";
 
 
 const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: [], duration_s: 0};
 
+
 type CurrentWorkoutContextType = {
   workout: Workout;
   setWorkout: (workout: Workout) => void;
 };
-export const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
+const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
   workout: DefaultWorkout,
   setWorkout: () => null
 });
@@ -18,6 +20,11 @@ export const getCurrentWorkoutSets = (workout: Workout, exerName: string) => {
   const exercise = workout.exercises.find(e => e.name === exerName);
   return exercise?.sets ?? [];
 };
+
+
+export const useCurrentWorkout = () => {
+  return useContext(CurrentWorkoutContext);
+}
 
 
 interface Props {
