@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   column: {
-    flex: 1
+    flex: 1,
+    textAlign: 'left',
   }
 });
 

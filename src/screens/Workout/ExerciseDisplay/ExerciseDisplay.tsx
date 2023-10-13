@@ -1,14 +1,12 @@
 import { useContext } from 'react';
-import { Button, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
+import { AddButton } from '../../../components';
 import { CurrentWorkoutContext, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
 
 const styles = StyleSheet.create({
-  exerciseDisplay: {
-    padding: 12.5
-  },
   name: {
     fontSize: 20,
     paddingBottom: 10,
@@ -27,18 +25,6 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 35
   },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 15,
-    backgroundColor: 'snow'
-  },
-  buttonText: {
-    color: 'silver',
-    fontSize: 20,
-    fontWeight: 'bold'
-  },
   spacer: {
     flex: 1
   }
@@ -47,6 +33,7 @@ const styles = StyleSheet.create({
 
 interface Props {
   name: string;
+  style?: StyleProp<ViewStyle>
 };
 export const ExerciseDisplay = (props: Props) => {
   const { workout, setWorkout } = useContext(CurrentWorkoutContext);
@@ -57,7 +44,7 @@ export const ExerciseDisplay = (props: Props) => {
 
   const sets = getCurrentWorkoutSets(workout, props.name);
   return (
-    <View style={styles.exerciseDisplay}>
+    <View style={props.style}>
       
       <Text style={styles.name}>{props.name}</Text>
       <View style={styles.headerRow}>
@@ -73,12 +60,12 @@ export const ExerciseDisplay = (props: Props) => {
         renderItem={({item}) => <SetDisplay exerciseName={props.name} set={item} />}
       />
 
-      <Pressable 
-        style={styles.button} 
-        onPress={() => {updateWorkoutSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}}
-      >
-        <Text style={styles.buttonText}>Add Set</Text>
-      </Pressable>
+      <AddButton 
+        onAdd={() => {updateWorkoutSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}}
+        text={'Add Set'}
+        textColor={'silver'}
+        backgroundColor={'snow'}
+      />
     </View>
   );
 };

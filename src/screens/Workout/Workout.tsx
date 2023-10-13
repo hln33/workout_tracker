@@ -4,6 +4,20 @@ import { CurrentWorkoutContext } from '../../context/CurrentWorkoutContext';
 import { Exercise } from '../../types';
 import { ExerciseInput, Timer } from './index';
 import { ExerciseDisplay } from './ExerciseDisplay/index';
+import { StyleSheet } from 'react-native';
+
+
+const styles = StyleSheet.create({
+  workout: {
+    padding: 20
+  },
+  exercise: {
+    paddingVertical: 10
+  },
+  addExerciseButton: {
+    paddingVertical: 25
+  }
+});
 
 
 export const Workout = () => {
@@ -11,7 +25,7 @@ export const Workout = () => {
   const { name, notes, exercises } = workout;
 
   return (
-    <View>
+    <View style={styles.workout}>
       {/* <Timer /> */}
 
       <TextInput placeholder={name} onChangeText={newName => setWorkout({ ...workout, name: newName })} />
@@ -22,11 +36,11 @@ export const Workout = () => {
       />      
       <FlatList
         data={exercises}
-        renderItem={({item}) => <ExerciseDisplay name={item.name} />}
+        renderItem={({item}) => <ExerciseDisplay style={styles.exercise} name={item.name} />}
       />
 
       <ExerciseInput 
-        style={{paddingHorizontal: 12.5}} 
+        style={styles.addExerciseButton}
         onAdd={(exer: Exercise) => setWorkout({ ...workout, exercises: [...exercises, exer] })} 
       />
     </View>
