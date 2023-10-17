@@ -1,7 +1,7 @@
-import { useContext } from 'react';
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
 import { AddButton } from '../../../components';
+import { Slidable } from '../../../gestures';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
@@ -57,7 +57,11 @@ export const ExerciseDisplay = (props: Props) => {
       <FlatList
         style={styles.rows}
         data={sets}
-        renderItem={({item}) => <SetDisplay exerciseName={props.name} set={item} />}
+        renderItem={({item}) => (
+          <Slidable>
+            <SetDisplay exerciseName={props.name} set={item} />
+          </Slidable>  
+        )}
       />
 
       <AddButton 

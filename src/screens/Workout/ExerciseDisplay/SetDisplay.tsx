@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NumericInput, DeleteButton } from '../../../components/index';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
