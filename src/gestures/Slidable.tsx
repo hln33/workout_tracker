@@ -1,4 +1,4 @@
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { useFrameCallback, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
 import { StyleSheet, View } from "react-native";
 import { ReactNode } from "react";
@@ -8,14 +8,18 @@ const styles = StyleSheet.create({
   
 });
 
+const DELETE_THRESHOLD = -180;
+
 interface Props {
   children: ReactNode;
+  onSlide: () => void;
 };
 export const Slidable = (props: Props) => {
   const pressed = useSharedValue(false);
   const offset = useSharedValue(0);
 
   const tap = Gesture.Pan()
+    //.runOnJS(true)
     .onBegin(() => {
       pressed.value = true;
     })
@@ -25,6 +29,12 @@ export const Slidable = (props: Props) => {
     .onFinalize(() => {
       offset.value = withSpring(0);
       pressed.value = false;
+      // props.onSlide();
+
+      console.log(offset.value);
+      if (offset.value <= DELETE_THRESHOLD) {
+        console.log('delete');
+      }
     });
 
   const animatedStyles = useAnimatedStyle(() => ({

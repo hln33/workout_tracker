@@ -58,7 +58,7 @@ export const ExerciseDisplay = (props: Props) => {
         style={styles.rows}
         data={sets}
         renderItem={({item}) => (
-          <Slidable>
+          <Slidable onSlide={() => console.log('slid')}>
             <SetDisplay exerciseName={props.name} set={item} />
           </Slidable>  
         )}
