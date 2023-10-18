@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
   
 });
 
-const DELETE_THRESHOLD = -180;
+
+const DELETE_THRESHOLD = -135;
+
 
 interface Props {
   children: ReactNode;
@@ -19,7 +21,6 @@ export const Slidable = (props: Props) => {
   const offset = useSharedValue(0);
 
   const tap = Gesture.Pan()
-    //.runOnJS(true)
     .onBegin(() => {
       pressed.value = true;
     })
@@ -29,13 +30,13 @@ export const Slidable = (props: Props) => {
     .onFinalize(() => {
       offset.value = withSpring(0);
       pressed.value = false;
-      // props.onSlide();
 
       console.log(offset.value);
       if (offset.value <= DELETE_THRESHOLD) {
-        console.log('delete');
+        props.onSlide();
       }
-    });
+    })
+    .runOnJS(true);
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [

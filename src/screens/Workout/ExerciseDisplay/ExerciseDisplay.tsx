@@ -42,6 +42,12 @@ export const ExerciseDisplay = (props: Props) => {
     setWorkout({ ...workout, exercises: updatedExercises });
   };
 
+  const onSetDelete = (setId: number) => {
+    let updatedSets = [...sets].filter(set => set.id !== setId);
+    updatedSets.forEach((set, newId) => set.id = newId);
+    updateWorkoutSets(updatedSets);
+  }
+
   const sets = getCurrentWorkoutSets(workout, props.name);
   return (
     <View style={props.style}>
@@ -58,7 +64,7 @@ export const ExerciseDisplay = (props: Props) => {
         style={styles.rows}
         data={sets}
         renderItem={({item}) => (
-          <Slidable onSlide={() => console.log('slid')}>
+          <Slidable onSlide={() => onSetDelete(item.id)}>
             <SetDisplay exerciseName={props.name} set={item} />
           </Slidable>  
         )}
