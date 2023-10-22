@@ -1,16 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { NumericInput, DeleteButton } from '../../../components/index';
+import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
 
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    height: 20,
+    backgroundColor: 'white'
   },
   column: {
     flex: 1,
     textAlign: 'left',
+  },
+  underflow: {
+    position: 'absolute',
+    backgroundColor: 'red',
+    height: 20,
+    width: Dimensions.get('window').width,
+    zIndex: 1
   }
 });
 
@@ -52,22 +62,28 @@ export const SetDisplay = (props: Props) => {
   };
 
   return (
-    <View style={styles.row}>
-      <Text style={styles.column}>{id + 1}</Text>
+    <>
 
-      <NumericInput 
-        style={styles.column}
-        placeholder={weight} 
-        onChangeText={e => onWeightUpdate(e)}
-      />
+      <Slidable style={{zIndex: 2}} onSlide={onDelete}>  
+        <View style={styles.row}>
+          <Text style={styles.column}>{id + 1}</Text>
 
-      <NumericInput 
-        style={styles.column} 
-        placeholder={reps} 
-        onChangeText={e => onRepsUpdate(e)}
-      />
+          <NumericInput 
+            style={styles.column}
+            placeholder={weight} 
+            onChangeText={e => onWeightUpdate(e)}
+          />
+          <NumericInput 
+            style={styles.column} 
+            placeholder={reps} 
+            onChangeText={e => onRepsUpdate(e)}
+          />
 
-      <DeleteButton style={styles.column} onDelete={onDelete} />
-    </View>
+          <DeleteButton style={styles.column} onDelete={() => console.log('')} />
+        </View>
+      </Slidable>
+
+      <View style={styles.underflow} />
+    </>
   );
 };

@@ -1,6 +1,6 @@
-import Animated, { useFrameCallback, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { ReactNode } from "react";
 
 
@@ -15,6 +15,7 @@ const DELETE_THRESHOLD = -135;
 interface Props {
   children: ReactNode;
   onSlide: () => void;
+  style?: StyleProp<ViewStyle>
 };
 export const Slidable = (props: Props) => {
   const pressed = useSharedValue(false);
@@ -46,7 +47,7 @@ export const Slidable = (props: Props) => {
   }));
 
   return (
-    <GestureHandlerRootView>
+    <GestureHandlerRootView style={props.style}>
         <GestureDetector gesture={tap}>
           <Animated.View style={[animatedStyles]}>
             {props.children}

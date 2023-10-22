@@ -1,7 +1,6 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
 import { AddButton } from '../../../components';
-import { Slidable } from '../../../gestures';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
@@ -42,12 +41,6 @@ export const ExerciseDisplay = (props: Props) => {
     setWorkout({ ...workout, exercises: updatedExercises });
   };
 
-  const onSetDelete = (setId: number) => {
-    let updatedSets = [...sets].filter(set => set.id !== setId);
-    updatedSets.forEach((set, newId) => set.id = newId);
-    updateWorkoutSets(updatedSets);
-  }
-
   const sets = getCurrentWorkoutSets(workout, props.name);
   return (
     <View style={props.style}>
@@ -64,9 +57,7 @@ export const ExerciseDisplay = (props: Props) => {
         style={styles.rows}
         data={sets}
         renderItem={({item}) => (
-          <Slidable onSlide={() => onSetDelete(item.id)}>
             <SetDisplay exerciseName={props.name} set={item} />
-          </Slidable>  
         )}
       />
 
