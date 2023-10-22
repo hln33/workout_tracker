@@ -6,10 +6,13 @@ import { Set } from '../../../types';
 
 
 const styles = StyleSheet.create({
+  slidingComponent: {
+    zIndex: 2
+  },
   row: {
     flexDirection: 'row',
     height: 20,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   column: {
     flex: 1,
@@ -19,7 +22,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'red',
     height: 20,
-    width: Dimensions.get('window').width,
+    width: 389,
+    paddingRight: 15,
+    textAlign: 'right',
+    color: 'white',
     zIndex: 1
   }
 });
@@ -64,7 +70,7 @@ export const SetDisplay = (props: Props) => {
   return (
     <>
 
-      <Slidable style={{zIndex: 2}} onSlide={onDelete}>  
+      <Slidable style={styles.slidingComponent} onSlide={onDelete}>  
         <View style={styles.row}>
           <Text style={styles.column}>{id + 1}</Text>
 
@@ -78,12 +84,10 @@ export const SetDisplay = (props: Props) => {
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
           />
-
-          <DeleteButton style={styles.column} onDelete={() => console.log('')} />
         </View>
       </Slidable>
 
-      <View style={styles.underflow} />
+      <Text style={styles.underflow}>Delete</Text>
     </>
   );
 };
