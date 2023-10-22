@@ -12,15 +12,22 @@ const styles = StyleSheet.create({
   dimension: {
     width: 390,
     height: 40,
-    paddingTop: 10,
   },
   row: {
     flexDirection: 'row',
-    backgroundColor: 'lightgray',
+    backgroundColor: 'white',
   },
   column: {
     flex: 1,
     textAlign: 'left',
+    margin: 5,
+    // backgroundColor: 'purple'
+  },
+  box: {
+    padding: 5,
+    borderRadius: 5,
+    width: 20,
+    backgroundColor: 'lightgray',
   },
   underflow: {
     position: 'absolute',
@@ -29,6 +36,7 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
   underflowText: {
+    paddingTop: 10,
     color: 'white',
     textAlign: 'right',
     fontWeight: 'bold'
@@ -76,18 +84,32 @@ export const SetDisplay = (props: Props) => {
     <>
       <Slidable style={styles.slidingComponent} onSlide={onDelete}>  
         <View style={[styles.row, styles.dimension]}>
-          <Text style={styles.column}>{id + 1}</Text>
+          <View style={styles.column}>
+            <View style={styles.box}>
+              <Text style={{}}>{id + 1}</Text>
+            </View>
+          </View>
 
-          <NumericInput 
-            style={styles.column}
-            placeholder={weight} 
-            onChangeText={e => onWeightUpdate(e)}
-          />
-          <NumericInput 
-            style={styles.column} 
-            placeholder={reps} 
-            onChangeText={e => onRepsUpdate(e)}
-          />
+          <View style={styles.column}>
+            <View style={styles.box}>
+              <NumericInput 
+              style={{}}
+              placeholder={weight} 
+              onChangeText={e => onWeightUpdate(e)}
+              />
+            </View>
+          </View>
+
+          <View style={styles.column}>
+            <View style={styles.box}>
+              <NumericInput 
+              style={{}} 
+              placeholder={reps} 
+              onChangeText={e => onRepsUpdate(e)}
+              />
+            </View>
+          </View>
+
         </View>
       </Slidable>
 

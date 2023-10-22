@@ -42,7 +42,6 @@ export const Slidable = (props: Props) => {
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [
       { translateX: offset.value },
-      { scale: withTiming(pressed.value ? 1.1 : 1) }
     ],
   }));
 

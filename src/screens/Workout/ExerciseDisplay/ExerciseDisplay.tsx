@@ -1,4 +1,4 @@
-import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { Dimensions, FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
 import { AddButton } from '../../../components';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
@@ -18,11 +18,14 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     fontSize: 15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'left'
   },
   rows: {
     paddingTop: 5,
-    paddingBottom: 35
+    paddingBottom: 10,
+    width: Dimensions.get('screen').width,
+    // backgroundColor: 'blue'
   },
   spacer: {
     flex: 1
@@ -50,7 +53,6 @@ export const ExerciseDisplay = (props: Props) => {
         <Text style={styles.column}>Set:</Text>
         <Text style={styles.column}>Weight:</Text>
         <Text style={styles.column}>Reps:</Text>
-        <Text style={styles.spacer} />
       </View>
 
       <FlatList
@@ -65,7 +67,7 @@ export const ExerciseDisplay = (props: Props) => {
         onAdd={() => {updateWorkoutSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}}
         text={'Add Set'}
         textColor={'silver'}
-        backgroundColor={'snow'}
+        backgroundColor={'lightgray'}
       />
     </View>
   );
