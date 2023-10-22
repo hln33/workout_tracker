@@ -1,5 +1,5 @@
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import { NumericInput, DeleteButton } from '../../../components/index';
+import { StyleSheet, Text, View } from 'react-native';
+import { NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
@@ -9,10 +9,14 @@ const styles = StyleSheet.create({
   slidingComponent: {
     zIndex: 2
   },
+  dimension: {
+    width: 390,
+    height: 40,
+    paddingTop: 10,
+  },
   row: {
     flexDirection: 'row',
-    height: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'lightgray',
   },
   column: {
     flex: 1,
@@ -21,12 +25,13 @@ const styles = StyleSheet.create({
   underflow: {
     position: 'absolute',
     backgroundColor: 'red',
-    height: 20,
-    width: 389,
     paddingRight: 15,
-    textAlign: 'right',
-    color: 'white',
     zIndex: 1
+  },
+  underflowText: {
+    color: 'white',
+    textAlign: 'right',
+    fontWeight: 'bold'
   }
 });
 
@@ -69,9 +74,8 @@ export const SetDisplay = (props: Props) => {
 
   return (
     <>
-
       <Slidable style={styles.slidingComponent} onSlide={onDelete}>  
-        <View style={styles.row}>
+        <View style={[styles.row, styles.dimension]}>
           <Text style={styles.column}>{id + 1}</Text>
 
           <NumericInput 
@@ -87,7 +91,9 @@ export const SetDisplay = (props: Props) => {
         </View>
       </Slidable>
 
-      <Text style={styles.underflow}>Delete</Text>
+      <Text style={[styles.underflow, styles.underflowText, styles.dimension]}>
+        Delete
+      </Text>
     </>
   );
 };
