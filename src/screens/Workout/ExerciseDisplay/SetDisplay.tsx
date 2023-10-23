@@ -30,18 +30,6 @@ const styles = StyleSheet.create({
     width: 20,
     backgroundColor: 'lightgray',
   },
-  underflow: {
-    position: 'absolute',
-    backgroundColor: 'red',
-    paddingRight: 15,
-    zIndex: 1
-  },
-  underflowText: {
-    paddingTop: 10,
-    color: 'white',
-    textAlign: 'right',
-    fontWeight: 'bold'
-  }
 });
 
 
@@ -96,29 +84,31 @@ export const SetDisplay = (props: Props) => {
   };
 
   return (
-    <>
-      <Slidable style={[styles.slidingComponent, styles.dimension]} onSlide={onDelete}>  
-        <View style={[styles.row]}>
-          <Field>
-            <Text>{id + 1}</Text>
-          </Field>
+    <Slidable 
+      style={styles.slidingComponent} 
+      sizeStyle={styles.dimension} 
+      onSlide={onDelete} 
+      underflowText={'Delete'}
+    >  
+      <View style={styles.row}>
+        <Field>
+          <Text>{id + 1}</Text>
+        </Field>
 
-          <Field>
-            <NumericInput 
-              placeholder={weight} 
-              onChangeText={e => onWeightUpdate(e)}
-            />
-          </Field>
+        <Field>
+          <NumericInput 
+            placeholder={weight} 
+            onChangeText={e => onWeightUpdate(e)}
+          />
+        </Field>
 
-          <Field>
-            <NumericInput 
-              placeholder={reps} 
-              onChangeText={e => onRepsUpdate(e)}
-            />
-          </Field>
-
-        </View>
-      </Slidable>
-    </>
+        <Field>
+          <NumericInput 
+            placeholder={reps} 
+            onChangeText={e => onRepsUpdate(e)}
+          />
+        </Field>
+      </View>
+    </Slidable>
   );
 };

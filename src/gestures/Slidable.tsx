@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
   slidingComponent: {
     zIndex: 2,
   },
-  dimension: {
-    width: 390,
-    height: 40,
-  },
   underflow: {
     zIndex: 1,
     position: 'absolute',
@@ -32,7 +28,9 @@ const DELETE_THRESHOLD = -135;
 interface Props {
   children: ReactNode;
   onSlide: () => void;
-  style?: StyleProp<ViewStyle>
+  underflowText: string;
+  style?: StyleProp<ViewStyle>,
+  sizeStyle?: StyleProp<ViewStyle>
 };
 export const Slidable = (props: Props) => {
   const pressed = useSharedValue(false);
@@ -66,14 +64,14 @@ export const Slidable = (props: Props) => {
     <>
       <GestureHandlerRootView style={[styles.slidingComponent]}>
           <GestureDetector gesture={tap}>
-            <Animated.View style={[animatedStyles, props.style]}>
+            <Animated.View style={[animatedStyles, props.style, props.sizeStyle]}>
               {props.children}
             </Animated.View>
           </GestureDetector>
       </GestureHandlerRootView>
 
-      <Text style={[styles.underflow, styles.underflowText, styles.dimension]}>
-        Delete
+      <Text style={[styles.underflow, styles.underflowText, props.sizeStyle]}>
+        {props.underflowText}
       </Text>
     </>
   );
