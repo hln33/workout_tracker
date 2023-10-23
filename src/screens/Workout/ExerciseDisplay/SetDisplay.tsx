@@ -8,7 +8,7 @@ import { Set } from '../../../types';
 
 const styles = StyleSheet.create({
   slidingComponent: {
-    zIndex: 2
+    backgroundColor: 'white'
   },
   dimension: {
     width: 390,
@@ -81,11 +81,6 @@ export const SetDisplay = (props: Props) => {
     updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
     setWorkout({ ...workout, exercises: updatedExercises });
   };
-  const onDelete = () => {
-    let updatedSets = [...sets].filter(set => set.id !== id);
-    updatedSets.forEach((set, newId) => set.id = newId);
-    updateWorkoutSets(updatedSets);
-  };
   const onWeightUpdate = (newWeight: number) => {
     let updatedSets = sets.map(s => (s.id === id) ? {...s, lbs: newWeight} : s);
     updateWorkoutSets(updatedSets);
@@ -94,11 +89,16 @@ export const SetDisplay = (props: Props) => {
     let updatedSets = sets.map(s => (s.id === id) ? {...s, reps: newReps} : s);
     updateWorkoutSets(updatedSets);
   };
+  const onDelete = () => {
+    let updatedSets = [...sets].filter(set => set.id !== id);
+    updatedSets.forEach((set, newId) => set.id = newId);
+    updateWorkoutSets(updatedSets);
+  };
 
   return (
     <>
-      <Slidable style={styles.slidingComponent} onSlide={onDelete}>  
-        <View style={[styles.row, styles.dimension]}>
+      <Slidable style={[styles.slidingComponent, styles.dimension]} onSlide={onDelete}>  
+        <View style={[styles.row]}>
           <Field>
             <Text>{id + 1}</Text>
           </Field>
@@ -119,10 +119,6 @@ export const SetDisplay = (props: Props) => {
 
         </View>
       </Slidable>
-
-      <Text style={[styles.underflow, styles.underflowText, styles.dimension]}>
-        Delete
-      </Text>
     </>
   );
 };

@@ -1,13 +1,30 @@
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
-import { StyleProp, StyleSheet, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, Text, ViewStyle } from "react-native";
 import { ReactNode } from "react";
 
 
 const styles = StyleSheet.create({
-  
+  slidingComponent: {
+    zIndex: 2,
+  },
+  dimension: {
+    width: 390,
+    height: 40,
+  },
+  underflow: {
+    zIndex: 1,
+    position: 'absolute',
+    backgroundColor: 'red',
+    paddingRight: 15
+  },
+  underflowText: {
+    paddingTop: 10,
+    color: 'white',
+    textAlign: 'right',
+    fontWeight: 'bold'
+  }
 });
-
 
 const DELETE_THRESHOLD = -135;
 
@@ -46,12 +63,18 @@ export const Slidable = (props: Props) => {
   }));
 
   return (
-    <GestureHandlerRootView style={props.style}>
-        <GestureDetector gesture={tap}>
-          <Animated.View style={[animatedStyles]}>
-            {props.children}
-          </Animated.View>
-        </GestureDetector>
-    </GestureHandlerRootView>
+    <>
+      <GestureHandlerRootView style={[styles.slidingComponent]}>
+          <GestureDetector gesture={tap}>
+            <Animated.View style={[animatedStyles, props.style]}>
+              {props.children}
+            </Animated.View>
+          </GestureDetector>
+      </GestureHandlerRootView>
+
+      <Text style={[styles.underflow, styles.underflowText, styles.dimension]}>
+        Delete
+      </Text>
+    </>
   );
 };
