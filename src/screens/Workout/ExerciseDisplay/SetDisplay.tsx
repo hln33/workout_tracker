@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { ReactNode } from 'react';
 import { NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
@@ -44,6 +45,20 @@ const styles = StyleSheet.create({
 });
 
 
+interface FieldProps {
+  children: ReactNode;
+};
+const Field = (props: FieldProps) => {
+  return (
+    <View style={styles.column}>
+      <View style={styles.box}>
+        {props.children}
+      </View>
+    </View>
+  )
+};
+
+
 interface Props {
   exerciseName: string;
   set: Set;
@@ -84,31 +99,23 @@ export const SetDisplay = (props: Props) => {
     <>
       <Slidable style={styles.slidingComponent} onSlide={onDelete}>  
         <View style={[styles.row, styles.dimension]}>
-          <View style={styles.column}>
-            <View style={styles.box}>
-              <Text style={{}}>{id + 1}</Text>
-            </View>
-          </View>
+          <Field>
+            <Text>{id + 1}</Text>
+          </Field>
 
-          <View style={styles.column}>
-            <View style={styles.box}>
-              <NumericInput 
-              style={{}}
+          <Field>
+            <NumericInput 
               placeholder={weight} 
               onChangeText={e => onWeightUpdate(e)}
-              />
-            </View>
-          </View>
+            />
+          </Field>
 
-          <View style={styles.column}>
-            <View style={styles.box}>
-              <NumericInput 
-              style={{}} 
+          <Field>
+            <NumericInput 
               placeholder={reps} 
               onChangeText={e => onRepsUpdate(e)}
-              />
-            </View>
-          </View>
+            />
+          </Field>
 
         </View>
       </Slidable>

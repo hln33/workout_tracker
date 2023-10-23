@@ -2,7 +2,7 @@ import { TextInput, Text, View, ViewStyle } from 'react-native';
 
 
 interface Props {
-  style: ViewStyle
+  style?: ViewStyle
   placeholder: number;
   onChangeText: (e: number) => void;
 }

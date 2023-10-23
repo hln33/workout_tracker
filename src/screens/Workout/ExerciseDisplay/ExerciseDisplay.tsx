@@ -66,7 +66,7 @@ export const ExerciseDisplay = (props: Props) => {
       <AddButton 
         onAdd={() => {updateWorkoutSets([...sets, {id: sets.length, lbs: 0, reps: 0}])}}
         text={'Add Set'}
-        textColor={'silver'}
+        textColor={'black'}
         backgroundColor={'lightgray'}
       />
     </View>
