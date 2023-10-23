@@ -50,9 +50,9 @@ export const ExerciseDisplay = (props: Props) => {
       
       <Text style={styles.name}>{props.name}</Text>
       <View style={styles.headerRow}>
-        <Text style={styles.column}>Set:</Text>
-        <Text style={styles.column}>Weight:</Text>
-        <Text style={styles.column}>Reps:</Text>
+        <Text style={styles.column}>Set</Text>
+        <Text style={styles.column}>Weight</Text>
+        <Text style={styles.column}>Reps</Text>
       </View>
 
       <FlatList

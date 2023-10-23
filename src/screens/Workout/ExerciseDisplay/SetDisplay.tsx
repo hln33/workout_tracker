@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     textAlign: 'left',
-    margin: 5,
     // backgroundColor: 'purple'
   },
   box: {
@@ -35,11 +34,12 @@ const styles = StyleSheet.create({
 
 interface ColumnProps {
   children: ReactNode;
+  width: number;
 };
 const Column = (props: ColumnProps) => {
   return (
     <View style={styles.column}>
-      <View style={styles.box}>
+      <View style={[styles.box, {width: props.width}]}>
         {props.children}
       </View>
     </View>
@@ -91,18 +91,18 @@ export const SetDisplay = (props: Props) => {
       underflowText={'Delete'}
     >  
       <View style={styles.row}>
-        <Column>
+        <Column width={20}>
           <Text>{id + 1}</Text>
         </Column>
 
-        <Column>
+        <Column width={50}>
           <NumericInput 
             placeholder={weight} 
             onChangeText={e => onWeightUpdate(e)}
           />
         </Column>
 
-        <Column>
+        <Column width={50}>
           <NumericInput 
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
