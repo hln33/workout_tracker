@@ -1,4 +1,4 @@
-import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
 import { StyleProp, StyleSheet, Text, ViewStyle } from "react-native";
 import { ReactNode } from "react";
@@ -45,7 +45,10 @@ export const Slidable = (props: Props) => {
       }
     })
     .onFinalize(() => {
-      offset.value = withSpring(0);
+      offset.value = withTiming(0, {
+        duration: 600,
+        easing: Easing.bezier(0.25, 0.1, 0.25, 1)
+      });
 
       // console.log(offset.value);
       if (offset.value <= DELETE_THRESHOLD) {
