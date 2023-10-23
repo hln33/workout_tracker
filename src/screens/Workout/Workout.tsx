@@ -1,4 +1,4 @@
-import { Dimensions, FlatList, TextInput, View } from 'react-native';
+import { FlatList, TextInput, View } from 'react-native';
 import { useCurrentWorkout } from '../../context/CurrentWorkoutContext';
 import { Exercise } from '../../types';
 import { ExerciseInput, Timer } from './index';
@@ -8,18 +8,18 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   workout: {
-    padding: 20,
+    padding: 15,
     backgroundColor: 'white',
   },
   exerciseList: {
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   exercise: {
-    paddingVertical: 10
+    paddingVertical: 10,
   },
   addExerciseButton: {
-    paddingVertical: 25
-  }
+    paddingVertical: 25,
+  },
 });
 
 

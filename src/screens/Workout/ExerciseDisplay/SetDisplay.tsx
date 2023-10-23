@@ -16,12 +16,10 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    backgroundColor: 'white',
   },
   column: {
     flex: 1,
     textAlign: 'left',
-    // backgroundColor: 'purple'
   },
   box: {
     padding: 5,
@@ -43,7 +41,7 @@ const Column = (props: ColumnProps) => {
         {props.children}
       </View>
     </View>
-  )
+  );
 };
 
 

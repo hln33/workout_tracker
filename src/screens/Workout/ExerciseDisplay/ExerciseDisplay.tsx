@@ -9,27 +9,23 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 20,
     paddingBottom: 10,
-    color: 'cadetblue'
+    color: 'cadetblue',
   },
   headerRow: {
     flexDirection: 'row',
-    paddingBottom: 10
+    paddingBottom: 10,
+    paddingRight: 10,
   },
   column: {
     flex: 1,
     fontSize: 15,
     fontWeight: 'bold',
-    textAlign: 'left'
+    textAlign: 'left',
   },
   rows: {
     paddingTop: 5,
     paddingBottom: 10,
-    width: Dimensions.get('screen').width,
-    // backgroundColor: 'blue'
   },
-  spacer: {
-    flex: 1
-  }
 });
 
 
