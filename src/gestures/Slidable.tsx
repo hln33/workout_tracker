@@ -22,9 +22,8 @@ const styles = StyleSheet.create({
   }
 });
 
+
 const DELETE_THRESHOLD = -135;
-
-
 interface Props {
   children: ReactNode;
   onSlide: () => void;
@@ -33,21 +32,22 @@ interface Props {
   sizeStyle?: StyleProp<ViewStyle>
 };
 export const Slidable = (props: Props) => {
-  const pressed = useSharedValue(false);
   const offset = useSharedValue(0);
 
-  const tap = Gesture.Pan()
+  const pan = Gesture.Pan()
     .onBegin(() => {
-      pressed.value = true;
+
     })
     .onChange(e => {
-      offset.value = e.translationX;
+      const swipedLeft = e.velocityX < 0;
+      if (swipedLeft) {
+       offset.value = e.translationX;
+      }
     })
     .onFinalize(() => {
       offset.value = withSpring(0);
-      pressed.value = false;
 
-      console.log(offset.value);
+      // console.log(offset.value);
       if (offset.value <= DELETE_THRESHOLD) {
         props.onSlide();
       }
@@ -63,7 +63,7 @@ export const Slidable = (props: Props) => {
   return (
     <>
       <GestureHandlerRootView style={[styles.slidingComponent]}>
-          <GestureDetector gesture={tap}>
+          <GestureDetector gesture={pan}>
             <Animated.View style={[animatedStyles, props.style, props.sizeStyle]}>
               {props.children}
             </Animated.View>
