@@ -27,16 +27,16 @@ const styles = StyleSheet.create({
   box: {
     padding: 5,
     borderRadius: 5,
-    width: 20,
+    width: 30,
     backgroundColor: 'lightgray',
   },
 });
 
 
-interface FieldProps {
+interface ColumnProps {
   children: ReactNode;
 };
-const Field = (props: FieldProps) => {
+const Column = (props: ColumnProps) => {
   return (
     <View style={styles.column}>
       <View style={styles.box}>
@@ -91,23 +91,23 @@ export const SetDisplay = (props: Props) => {
       underflowText={'Delete'}
     >  
       <View style={styles.row}>
-        <Field>
+        <Column>
           <Text>{id + 1}</Text>
-        </Field>
+        </Column>
 
-        <Field>
+        <Column>
           <NumericInput 
             placeholder={weight} 
             onChangeText={e => onWeightUpdate(e)}
           />
-        </Field>
+        </Column>
 
-        <Field>
+        <Column>
           <NumericInput 
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
           />
-        </Field>
+        </Column>
       </View>
     </Slidable>
   );
