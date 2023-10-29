@@ -12,10 +12,11 @@ const styles = StyleSheet.create({
   },
   dimension: {
     width: 390,
-    height: 40,
+    height: 50,
   },
   row: {
     flexDirection: 'row',
+    paddingVertical: 10,
   },
   column: {
     flex: 1,

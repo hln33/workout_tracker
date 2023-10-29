@@ -5,7 +5,10 @@ import { ReactNode } from "react";
 
 
 const styles = StyleSheet.create({
-  slidingComponent: {
+  slidable: {
+
+  },
+  overlay: {
     zIndex: 2,
   },
   underflow: {
@@ -64,8 +67,8 @@ export const Slidable = (props: Props) => {
   }));
 
   return (
-    <View style={{marginVertical: 10}}>
-      <GestureHandlerRootView style={[styles.slidingComponent]}>
+    <View style={styles.slidable}>
+      <GestureHandlerRootView style={[styles.overlay]}>
           <GestureDetector gesture={pan}>
             <Animated.View style={[animatedStyles, props.style, props.sizeStyle]}>
               {props.children}
