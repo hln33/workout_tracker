@@ -8,7 +8,7 @@ import { Set } from '../../../types';
 
 const styles = StyleSheet.create({
   slidingComponent: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   dimension: {
     width: 390,

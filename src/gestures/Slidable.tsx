@@ -1,6 +1,6 @@
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
-import { StyleProp, StyleSheet, Text, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 import { ReactNode } from "react";
 
 
@@ -12,13 +12,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
     position: 'absolute',
     backgroundColor: 'red',
-    paddingRight: 15
+    paddingRight: 15,
   },
   underflowText: {
     paddingTop: 10,
     color: 'white',
     textAlign: 'right',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }
 });
 
@@ -64,7 +64,7 @@ export const Slidable = (props: Props) => {
   }));
 
   return (
-    <>
+    <View style={{marginVertical: 10}}>
       <GestureHandlerRootView style={[styles.slidingComponent]}>
           <GestureDetector gesture={pan}>
             <Animated.View style={[animatedStyles, props.style, props.sizeStyle]}>
@@ -76,6 +76,6 @@ export const Slidable = (props: Props) => {
       <Text style={[styles.underflow, styles.underflowText, props.sizeStyle]}>
         {props.underflowText}
       </Text>
-    </>
+    </View>
   );
 };
