@@ -11,14 +11,15 @@ const styles = StyleSheet.create({
   overlay: {
     zIndex: 2,
   },
-  underflow: {
+  underflowContainer: {
     zIndex: 1,
+    flex: 1,
+    justifyContent: 'center',
     position: 'absolute',
     backgroundColor: 'red',
     paddingRight: 15,
   },
   underflowText: {
-    paddingTop: 10,
     color: 'white',
     textAlign: 'right',
     fontWeight: 'bold',
@@ -76,9 +77,11 @@ export const Slidable = (props: Props) => {
           </GestureDetector>
       </GestureHandlerRootView>
 
-      <Text style={[styles.underflow, styles.underflowText, props.sizeStyle]}>
-        {props.underflowText}
-      </Text>
+      <View style={[styles.underflowContainer, props.sizeStyle]}>
+        <Text style={[styles.underflowText]}>
+          {props.underflowText}
+        </Text>
+      </View>
     </View>
   );
 };
