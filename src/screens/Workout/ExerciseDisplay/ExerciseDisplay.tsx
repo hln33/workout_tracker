@@ -1,17 +1,19 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { SetDisplay } from './index';
-import { AddButton, CheckBox } from '../../../components';
+import { AddButton } from '../../../components';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
 
 const styles = StyleSheet.create({
-  name: {
+  exerciseName: {
     fontSize: 20,
     paddingBottom: 10,
     color: 'cadetblue',
   },
   headerRow: {
+    flex: 1,
     flexDirection: 'row',
     paddingBottom: 10,
     paddingRight: 10,
@@ -43,13 +45,13 @@ export const ExerciseDisplay = (props: Props) => {
   const sets = getCurrentWorkoutSets(workout, props.name);
   return (
     <View style={props.style}>
-      
-      <Text style={styles.name}>{props.name}</Text>
+      <Text style={styles.exerciseName}>{props.name}</Text>
+
       <View style={styles.headerRow}>
         <Text style={styles.column}>Set</Text>
         <Text style={styles.column}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
-        <Text style={styles.column}>Completed</Text>
+        <Icon style={styles.column} name='check'/>
       </View>
 
       <FlatList

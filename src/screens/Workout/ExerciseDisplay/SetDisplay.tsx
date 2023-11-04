@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { ReactNode } from 'react';
-import { CheckBox, NumericInput } from '../../../components/index';
+import { CheckBox, NumericColumn, NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
@@ -18,32 +17,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingVertical: 10,
   },
-  column: {
-    flex: 1,
-    textAlign: 'left',
-  },
-  box: {
-    padding: 5,
-    borderRadius: 5,
-    width: 30,
-    backgroundColor: 'lightgray',
-  },
 });
-
-
-interface ColumnProps {
-  children: ReactNode;
-  width: number;
-};
-const Column = (props: ColumnProps) => {
-  return (
-    <View style={styles.column}>
-      <View style={[styles.box, {width: props.width}]}>
-        {props.children}
-      </View>
-    </View>
-  );
-};
 
 
 interface Props {
@@ -90,27 +64,27 @@ export const SetDisplay = (props: Props) => {
       underflowText={'Delete'}
     >  
       <View style={styles.row}>
-        <Column width={20}>
+        <NumericColumn width={20}>
           <Text>{id + 1}</Text>
-        </Column>
+        </NumericColumn>
 
-        <Column width={50}>
+        <NumericColumn width={50}>
           <NumericInput 
             placeholder={weight} 
             onChangeText={e => onWeightUpdate(e)}
           />
-        </Column>
+        </NumericColumn>
 
-        <Column width={50}>
+        <NumericColumn width={50}>
           <NumericInput 
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
           />
-        </Column>
-
-        <Column width={50}>
+        </NumericColumn>
+        
+        <View style={{flex: 1}}>
           <CheckBox />
-        </Column>
+        </View>
       </View>
     </Slidable>
   );
