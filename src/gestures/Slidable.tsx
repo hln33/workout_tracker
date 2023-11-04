@@ -1,4 +1,4 @@
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withSpring, withTiming } from "react-native-reanimated";
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 import { ReactNode } from "react";
@@ -14,15 +14,15 @@ const styles = StyleSheet.create({
   underflowContainer: {
     zIndex: 1,
     flex: 1,
-    justifyContent: 'center',
     position: 'absolute',
+    justifyContent: 'center',
     backgroundColor: 'red',
-    paddingRight: 15,
   },
   underflowText: {
     color: 'white',
     textAlign: 'right',
     fontWeight: 'bold',
+    paddingRight: 15,
   }
 });
 

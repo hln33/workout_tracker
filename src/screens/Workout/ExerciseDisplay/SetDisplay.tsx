@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { ReactNode } from 'react';
-import { NumericInput } from '../../../components/index';
+import { CheckBox, NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
@@ -106,6 +106,10 @@ export const SetDisplay = (props: Props) => {
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
           />
+        </Column>
+
+        <Column width={50}>
+          <CheckBox />
         </Column>
       </View>
     </Slidable>

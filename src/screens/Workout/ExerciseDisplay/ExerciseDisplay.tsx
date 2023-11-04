@@ -1,6 +1,6 @@
-import { Dimensions, FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetDisplay } from './index';
-import { AddButton } from '../../../components';
+import { AddButton, CheckBox } from '../../../components';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'
 
@@ -49,6 +49,7 @@ export const ExerciseDisplay = (props: Props) => {
         <Text style={styles.column}>Set</Text>
         <Text style={styles.column}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
+        <Text style={styles.column}>Completed</Text>
       </View>
 
       <FlatList
