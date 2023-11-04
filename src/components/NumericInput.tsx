@@ -1,4 +1,4 @@
-import { TextInput, Text, View, ViewStyle } from 'react-native';
+import { TextInput, View, ViewStyle } from 'react-native';
 
 
 interface Props {

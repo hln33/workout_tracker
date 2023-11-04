@@ -10,12 +10,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   dimension: {
-    width: 390,
     height: 50,
+    width: 400
   },
   row: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingVertical: 10,
+    paddingHorizontal: 10,
   },
 });
 
@@ -68,8 +70,9 @@ export const SetDisplay = (props: Props) => {
           <Text>{id + 1}</Text>
         </NumericColumn>
 
-        <NumericColumn width={50}>
+        <NumericColumn width={50} style={{backgroundColor: 'red'}}>
           <NumericInput 
+            style={{backgroundColor: 'blue'}}
             placeholder={weight} 
             onChangeText={e => onWeightUpdate(e)}
           />
@@ -82,7 +85,7 @@ export const SetDisplay = (props: Props) => {
           />
         </NumericColumn>
         
-        <View style={{flex: 1}}>
+        <View style={{}}>
           <CheckBox />
         </View>
       </View>
