@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { CheckBox, ListRow, NumericColumn, NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 interface Props {
   exerciseName: string;
   set: Set;
+  columnStyle?: StyleProp<ViewStyle | TextStyle>;
 };
 export const SetInfo = (props: Props) => {
   const { workout, setWorkout } = useCurrentWorkout();
@@ -60,11 +61,11 @@ export const SetInfo = (props: Props) => {
       underflowText={'Delete'}
     >  
       <ListRow>
-        <NumericColumn width={20}>
+        <NumericColumn style={[props.columnStyle, {backgroundColor: 'green'}]} width={20}>
           <Text>{id + 1}</Text>
         </NumericColumn>
 
-        <NumericColumn width={50} style={{backgroundColor: 'red'}}>
+        <NumericColumn style={[props.columnStyle, {backgroundColor: 'red'}]} width={50}>
           <NumericInput 
             style={{backgroundColor: 'blue'}}
             placeholder={weight} 
@@ -72,14 +73,16 @@ export const SetInfo = (props: Props) => {
           />
         </NumericColumn>
 
-        <NumericColumn width={50}>
+        <NumericColumn style={props.columnStyle} width={50}>
           <NumericInput 
             placeholder={reps} 
             onChangeText={e => onRepsUpdate(e)}
           />
         </NumericColumn>
         
-        <CheckBox />
+        <View style={props.columnStyle}>
+          <CheckBox />
+        </View>
       </ListRow>
     </Slidable>
   );

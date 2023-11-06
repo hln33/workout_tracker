@@ -6,13 +6,8 @@ const styles = StyleSheet.create({
   headerRow: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingVertical: 10,
     paddingHorizontal: 10,
-  },
-  rows: {
-    paddingTop: 5,
-    paddingBottom: 10,
   },
 });
 

@@ -1,15 +1,14 @@
-import { StyleSheet, View, ViewStyle } from 'react-native';
+import { StyleSheet, StyleProp,  View, ViewStyle } from 'react-native';
 import { ReactNode } from 'react';
 
 
 const styles = StyleSheet.create({
   column: {
-    flex: 1,
+    // flex: 1,
   },
   box: {
     padding: 5,
     borderRadius: 5,
-    width: 30,
     backgroundColor: 'lightgray',
   },
 });
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
 interface Props {
   children: ReactNode;
   width: number;
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
 };
 export const NumericColumn = (props: Props) => {
   return (

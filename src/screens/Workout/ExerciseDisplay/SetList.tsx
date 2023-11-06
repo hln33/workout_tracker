@@ -7,6 +7,8 @@ import { Set } from '../../../types'
 
 const styles = StyleSheet.create({
   column: {
+    flex: 1,
+    marginHorizontal: 15,
     fontSize: 15,
     fontWeight: 'bold',
   },
@@ -26,7 +28,7 @@ export const SetList = (props: Props) => {
   return (
     <View>
       <ListRow>
-        <Text style={styles.column}>Set</Text>
+        <Text style={[styles.column, {backgroundColor: 'blue'}]}>Set</Text>
         <Text style={[styles.column, {backgroundColor: 'green'}]}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
         <Icon style={styles.column} name='check'/>
@@ -36,7 +38,7 @@ export const SetList = (props: Props) => {
         style={styles.rows}
         data={props.sets}
         renderItem={({item}) => (
-            <SetInfo exerciseName={props.name} set={item} />
+            <SetInfo exerciseName={props.name} set={item} columnStyle={styles.column}/>
         )}
       />
     </View>
