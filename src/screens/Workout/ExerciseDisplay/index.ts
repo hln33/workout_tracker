@@ -1,3 +1,3 @@
 export * from './ExerciseDisplay';
-export * from './SetDisplay';
+export * from './SetInfo';
 export * from './SetList';

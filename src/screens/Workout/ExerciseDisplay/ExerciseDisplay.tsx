@@ -1,6 +1,5 @@
-import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { SetDisplay, SetList } from './index';
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { SetList } from './index';
 import { AddButton } from '../../../components';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types'

@@ -1,17 +1,11 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { SetDisplay } from './index';
+import { SetInfo } from './index';
+import { ListRow } from '../../../components';
 import { Set } from '../../../types'
 
 
 const styles = StyleSheet.create({
-  headerRow: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 10,
-    paddingHorizontal: 10,
-  },
   column: {
     fontSize: 15,
     fontWeight: 'bold',
@@ -31,18 +25,18 @@ interface Props {
 export const SetList = (props: Props) => {
   return (
     <View>
-      <View style={styles.headerRow}>
+      <ListRow>
         <Text style={styles.column}>Set</Text>
         <Text style={[styles.column, {backgroundColor: 'green'}]}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
         <Icon style={styles.column} name='check'/>
-      </View>
+      </ListRow>
 
       <FlatList
         style={styles.rows}
         data={props.sets}
         renderItem={({item}) => (
-            <SetDisplay exerciseName={props.name} set={item} />
+            <SetInfo exerciseName={props.name} set={item} />
         )}
       />
     </View>

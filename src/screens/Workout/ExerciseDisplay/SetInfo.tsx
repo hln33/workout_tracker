@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { CheckBox, NumericColumn, NumericInput } from '../../../components/index';
+import { CheckBox, ListRow, NumericColumn, NumericInput } from '../../../components/index';
 import { Slidable } from '../../../gestures';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
 import { Set } from '../../../types';
@@ -13,12 +13,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: 400
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-  },
 });
 
 
@@ -26,7 +20,7 @@ interface Props {
   exerciseName: string;
   set: Set;
 };
-export const SetDisplay = (props: Props) => {
+export const SetInfo = (props: Props) => {
   const { workout, setWorkout } = useCurrentWorkout();
   const getState = (set: Set | undefined) => {
     const weight = set ? set.lbs : 0;
@@ -65,7 +59,7 @@ export const SetDisplay = (props: Props) => {
       onSlide={onDelete} 
       underflowText={'Delete'}
     >  
-      <View style={styles.row}>
+      <ListRow>
         <NumericColumn width={20}>
           <Text>{id + 1}</Text>
         </NumericColumn>
@@ -85,10 +79,8 @@ export const SetDisplay = (props: Props) => {
           />
         </NumericColumn>
         
-        <View style={{}}>
-          <CheckBox />
-        </View>
-      </View>
+        <CheckBox />
+      </ListRow>
     </Slidable>
   );
 };
