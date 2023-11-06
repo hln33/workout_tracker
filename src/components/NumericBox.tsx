@@ -3,9 +3,6 @@ import { ReactNode } from 'react';
 
 
 const styles = StyleSheet.create({
-  column: {
-    // flex: 1,
-  },
   box: {
     padding: 5,
     borderRadius: 5,
@@ -19,9 +16,9 @@ interface Props {
   width: number;
   style?: StyleProp<ViewStyle>
 };
-export const NumericColumn = (props: Props) => {
+export const NumericBox = (props: Props) => {
   return (
-    <View style={[styles.column, props.style]}>
+    <View style={props.style}>
       <View style={[styles.box, {width: props.width}]}>
         {props.children}
       </View>

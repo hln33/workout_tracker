@@ -17,7 +17,6 @@ interface Props {
   columnStyle?: StyleProp<ViewStyle>;
 };
 export const ListRow = (props: Props) => {
-
   return (
     <View style={styles.headerRow}>
       {props.children}

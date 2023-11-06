@@ -28,8 +28,8 @@ export const SetList = (props: Props) => {
   return (
     <View>
       <ListRow>
-        <Text style={[styles.column, {backgroundColor: 'blue'}]}>Set</Text>
-        <Text style={[styles.column, {backgroundColor: 'green'}]}>Weight</Text>
+        <Text style={[styles.column]}>Set</Text>
+        <Text style={[styles.column]}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
         <Icon style={styles.column} name='check'/>
       </ListRow>

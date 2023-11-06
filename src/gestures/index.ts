@@ -1,1 +1,1 @@
-export * from './Slidable';
+export * from './SlideGesture';
