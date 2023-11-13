@@ -1,8 +1,8 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { SetInfo } from './SetInfo';
-import { ListRow } from '../../../components';
-import { Set } from '../../../types'
+import { ListRow } from '@Components';
+import { Set } from '@Types'
 
 
 const styles = StyleSheet.create({

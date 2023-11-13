@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Button, Text, View } from 'react-native';
-import { CurrentWorkoutContext } from '../../context/CurrentWorkoutContext';
+import { CurrentWorkoutContext } from '@Contexts';
 
 
 interface Props {

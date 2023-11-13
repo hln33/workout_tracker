@@ -1,7 +1,7 @@
 import { StyleSheet, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
-import { CheckBox, ListRow, NumericBox, NumericInput, Slidable } from '../../../components/index';
-import { getCurrentWorkoutSets, useCurrentWorkout } from '../../../context/CurrentWorkoutContext';
-import { Set } from '../../../types';
+import { CheckBox, ListRow, NumericBox, NumericInput, Slidable } from '@Components';
+import { getCurrentWorkoutSets, useCurrentWorkout } from '@Contexts';
+import { Set } from '@Types';
 
 
 const styles = StyleSheet.create({

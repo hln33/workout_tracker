@@ -1,4 +1,18 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["."],
+      "@Components": [
+        "./src/components/index"
+      ],
+      "@Types": [
+        "./src/types.tsx"
+      ],
+      "@Contexts": [
+        "./src/contexts/index"
+      ]
+    }
+  },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }

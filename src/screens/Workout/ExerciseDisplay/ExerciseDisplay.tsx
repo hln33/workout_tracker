@@ -1,8 +1,8 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetList } from './SetList';
-import { AddButton } from '../../../components';
-import { useCurrentWorkout, getCurrentWorkoutSets } from '../../../context/CurrentWorkoutContext';
-import { Set } from '../../../types'
+import { AddButton } from '@Components';
+import { useCurrentWorkout, getCurrentWorkoutSets } from '@Contexts';
+import { Set } from '@Types'
 
 
 const styles = StyleSheet.create({

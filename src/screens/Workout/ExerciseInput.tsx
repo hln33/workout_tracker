@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { ViewStyle } from 'react-native';
 import { StyleProp } from 'react-native';
 import { Button, Text, TextInput, View } from 'react-native';
-import { AddButton, InputDialog } from '../../components'
-import { Exercise } from '../../types'
+import { AddButton, InputDialog } from '@Components';
+import { Exercise } from '@Types'
 
 
 interface Props {

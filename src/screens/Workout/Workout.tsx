@@ -1,9 +1,8 @@
-import { FlatList, TextInput, View } from 'react-native';
-import { useCurrentWorkout } from '../../context/CurrentWorkoutContext';
-import { Exercise } from '../../types';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { useCurrentWorkout } from '@Contexts';
+import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';
-import { StyleSheet } from 'react-native';
 
 
 const styles = StyleSheet.create({
