@@ -1,6 +1,6 @@
 import { FlatList, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { SetInfo } from './index';
+import { SetInfo } from './SetInfo';
 import { ListRow } from '../../../components';
 import { Set } from '../../../types'
 
@@ -28,8 +28,8 @@ export const SetList = (props: Props) => {
   return (
     <View>
       <ListRow>
-        <Text style={[styles.column]}>Set</Text>
-        <Text style={[styles.column]}>Weight</Text>
+        <Text style={styles.column}>Set</Text>
+        <Text style={styles.column}>Weight</Text>
         <Text style={styles.column}>Reps</Text>
         <Icon style={styles.column} name='check'/>
       </ListRow>

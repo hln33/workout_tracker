@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
 
 
 interface Props {
-  children: ReactNode;
   onSlide: () => void;
+  children: ReactNode;
   underflowText: string;
   style?: StyleProp<ViewStyle>,
   sizeStyle?: StyleProp<ViewStyle>
@@ -37,7 +37,7 @@ export const Slidable = (props: Props) => {
   return (
     <View style={styles.slidable}>
       <View style={styles.overlay}>
-        <SlideGesture onSlide={props.onSlide} style={{backgroundColor: 'white'}} sizeStyle={props.sizeStyle}>
+        <SlideGesture onSlide={props.onSlide} style={props.style} sizeStyle={props.sizeStyle}>
           {props.children}
         </SlideGesture>
       </View>

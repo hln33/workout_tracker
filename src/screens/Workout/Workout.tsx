@@ -1,7 +1,7 @@
 import { FlatList, TextInput, View } from 'react-native';
 import { useCurrentWorkout } from '../../context/CurrentWorkoutContext';
 import { Exercise } from '../../types';
-import { ExerciseInput, Timer } from './index';
+import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';
 import { StyleSheet } from 'react-native';
 
