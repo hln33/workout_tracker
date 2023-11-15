@@ -21,16 +21,26 @@ interface Props {
   columnStyle?: StyleProp<ViewStyle | TextStyle>;
 };
 export const SetInfo = (props: Props) => {
-  const { workout, setWorkout } = useCurrentWorkout();
+  // helper functions
   const getState = (set: Set | undefined) => {
     const weight = set ? set.lbs : 0;
     const reps = set ? set.reps : 0;
-    return { weight, reps };
+    const isComplete = set ? set.isComplete: false;
+    return { weight, reps, isComplete };
   };
+  const updateProperty = (
+    sets: Set[], 
+    id: number, 
+    updateFunction: (set: Set) => Set
+  ): Set[] => {
+    return sets.map(s => (s.id === id) ? updateFunction(s) : s);
+  }
 
+  // state
+  const { workout, setWorkout } = useCurrentWorkout();
   const id = props.set.id;
   const sets = getCurrentWorkoutSets(workout, props.exerciseName);
-  const { weight, reps } = getState(sets.find(s => s.id === id));
+  const { weight, reps, isComplete } = getState(sets.find(s => s.id === id));
 
   // Callback Functions
   const updateWorkoutSets = (updatedSets: Set[]) => {
@@ -39,13 +49,17 @@ export const SetInfo = (props: Props) => {
     setWorkout({ ...workout, exercises: updatedExercises });
   };
   const onWeightUpdate = (newWeight: number) => {
-    let updatedSets = sets.map(s => (s.id === id) ? {...s, lbs: newWeight} : s);
+    let updatedSets = updateProperty(sets, id, set => ({...set, lbs: newWeight}));
     updateWorkoutSets(updatedSets);
   };
   const onRepsUpdate = (newReps: number) => {
-    let updatedSets = sets.map(s => (s.id === id) ? {...s, reps: newReps} : s);
+    let updatedSets = updateProperty(sets, id, set => ({...set, reps: newReps}));
     updateWorkoutSets(updatedSets);
   };
+  const onCompleteUpdate = (newComplete: boolean) => {
+    let updatedSets = updateProperty(sets, id, set => ({...set, isComplete: newComplete}));
+    updateWorkoutSets(updatedSets);
+  }
   const onDelete = () => {
     let updatedSets = [...sets].filter(set => set.id !== id);
     updatedSets.forEach((set, newId) => set.id = newId);
@@ -79,7 +93,10 @@ export const SetInfo = (props: Props) => {
         </NumericBox>
         
         <View style={props.columnStyle}>
-          <CheckBox />
+          <CheckBox 
+            checked={isComplete}
+            onValueChange={e => onCompleteUpdate(e)}
+          />
         </View>
       </ListRow>
     </Slidable>

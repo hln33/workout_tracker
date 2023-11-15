@@ -21,4 +21,5 @@ export type Set = {
   id: number;
   lbs: number;
   reps: number;
+  isComplete: boolean;
 };
