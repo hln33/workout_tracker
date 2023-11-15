@@ -21,22 +21,13 @@ interface Props {
   columnStyle?: StyleProp<ViewStyle | TextStyle>;
 };
 export const SetInfo = (props: Props) => {
-  // helper functions
+  // state
   const getState = (set: Set | undefined) => {
     const weight = set ? set.lbs : 0;
     const reps = set ? set.reps : 0;
     const isComplete = set ? set.isComplete: false;
     return { weight, reps, isComplete };
   };
-  const updateProperty = (
-    sets: Set[], 
-    id: number, 
-    updateFunction: (set: Set) => Set
-  ): Set[] => {
-    return sets.map(s => (s.id === id) ? updateFunction(s) : s);
-  }
-
-  // state
   const { workout, setWorkout } = useCurrentWorkout();
   const id = props.set.id;
   const sets = getCurrentWorkoutSets(workout, props.exerciseName);
@@ -48,21 +39,25 @@ export const SetInfo = (props: Props) => {
     updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
     setWorkout({ ...workout, exercises: updatedExercises });
   };
+  const updateProperty = (
+    sets: Set[], 
+    id: number, 
+    updateFunction: (set: Set) => Set
+  ): void => {
+     updateWorkoutSets(sets.map(s => (s.id === id) ? updateFunction(s) : s));
+  }
   const onWeightUpdate = (newWeight: number) => {
-    let updatedSets = updateProperty(sets, id, set => ({...set, lbs: newWeight}));
-    updateWorkoutSets(updatedSets);
+    updateProperty(sets, id, set => ({...set, lbs: newWeight}));
   };
   const onRepsUpdate = (newReps: number) => {
-    let updatedSets = updateProperty(sets, id, set => ({...set, reps: newReps}));
-    updateWorkoutSets(updatedSets);
+    updateProperty(sets, id, set => ({...set, reps: newReps}));
   };
   const onCompleteUpdate = (newComplete: boolean) => {
-    let updatedSets = updateProperty(sets, id, set => ({...set, isComplete: newComplete}));
-    updateWorkoutSets(updatedSets);
+    updateProperty(sets, id, set => ({...set, isComplete: newComplete}));
   }
   const onDelete = () => {
-    let updatedSets = [...sets].filter(set => set.id !== id);
-    updatedSets.forEach((set, newId) => set.id = newId);
+    let updatedSets = sets.filter(set => set.id !== id)
+                          .map((set, newId) => ({ ...set, id: newId }));
     updateWorkoutSets(updatedSets);
   };
 
