@@ -20,7 +20,16 @@ export const Home = ({ navigation }: Props) => {
     <View style={styles.container}>
       <Text>Workout Tracker</Text>
       <StatusBar style='auto' />
-      <Button title='Start a Workout' onPress={() => navigation.navigate('Workout')} />
+      
+      <Button 
+        title='Start a Workout' 
+        onPress={() => {
+          const currentDate = new Date();
+          navigation.navigate('Workout', 
+            {dateISOString: currentDate.toISOString()}
+          );
+        }} 
+      />
       <Button title='Profile' onPress={() => navigation.navigate('Profile')} />
       <Button title='History' onPress={() => navigation.navigate('History')} />
     </View>

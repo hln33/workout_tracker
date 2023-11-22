@@ -1,4 +1,6 @@
 import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackParamList } from '@Types'
 import { useCurrentWorkout } from '@Contexts';
 import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
@@ -21,10 +23,13 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export const Workout = () => {
+type Props = NativeStackScreenProps<StackParamList, 'Workout'>
+export const Workout = ({ route, navigation }: Props) => {
   const { workout, setWorkout } = useCurrentWorkout();
   const { name, notes, exercises } = workout;
+  const { dateISOString } = route.params;
+
+  console.log(dateISOString);
 
   return (
     <View style={styles.workout}>

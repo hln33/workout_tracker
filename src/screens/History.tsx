@@ -11,8 +11,13 @@ export const History = ({ navigation }: Props) => {
       <Text>Calendar</Text>
       <Calendar 
         onDayPress={day => {
-          console.log(day);
-          navigation.navigate('Workout');
+          let date = new Date(day.dateString);
+          console.log(date.toISOString());
+
+          navigation.navigate('Workout', {dateISOString: date.toISOString()});
+        }}
+        markedDates={{
+          '2023-11-02': {selected: true}
         }}
       />
     </>
