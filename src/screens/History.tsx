@@ -1,10 +1,10 @@
 import { Text } from 'react-native';
 import {Calendar} from 'react-native-calendars'; 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StackParamList } from '@Types'
+import { AppStackParamList } from '../navigation/AppStackNavigator';
 
 
-type Props = NativeStackScreenProps<StackParamList, 'History'>
+type Props = NativeStackScreenProps<AppStackParamList, 'History'>
 export const History = ({ navigation }: Props) => {
   return (
     <>
