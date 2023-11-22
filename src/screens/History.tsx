@@ -1,12 +1,20 @@
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import {Calendar} from 'react-native-calendars'; 
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackParamList } from '@Types'
 
 
-export const History = () => {
+type Props = NativeStackScreenProps<StackParamList, 'History'>
+export const History = ({ navigation }: Props) => {
   return (
     <>
-      <Text>History</Text>
-      <Calendar />
+      <Text>Calendar</Text>
+      <Calendar 
+        onDayPress={day => {
+          console.log(day);
+          navigation.navigate('Workout');
+        }}
+      />
     </>
   );
 };

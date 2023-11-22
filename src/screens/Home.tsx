@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
 });
 
 
-type props = NativeStackScreenProps<StackParamList, 'Home'>
-export const Home = ({navigation}: props) => {
+type Props = NativeStackScreenProps<StackParamList, 'Home'>
+export const Home = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
       <Text>Workout Tracker</Text>
