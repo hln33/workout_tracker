@@ -29,7 +29,7 @@ export const ExerciseInput = (props: Props) => {
         <Button 
           title='Add' 
           onPress={() => {
-            props.onAdd({name: name, sets: [{id: 0, lbs: 0, reps: 0}]});
+            props.onAdd({name: name, sets: [{id: 0, lbs: 0, reps: 0, isComplete: false}]});
             setVisible(false);
           }} 
         />

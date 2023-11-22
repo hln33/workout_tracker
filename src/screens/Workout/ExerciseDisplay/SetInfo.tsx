@@ -39,12 +39,8 @@ export const SetInfo = (props: Props) => {
     updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
     setWorkout({ ...workout, exercises: updatedExercises });
   };
-  const updateProperty = (
-    sets: Set[], 
-    id: number, 
-    updateFunction: (set: Set) => Set
-  ): void => {
-     updateWorkoutSets(sets.map(s => (s.id === id) ? updateFunction(s) : s));
+  const updateProperty = (sets: Set[], id: number, updateFunction: (set: Set) => Set): void => {
+    updateWorkoutSets(sets.map(s => (s.id === id) ? updateFunction(s) : s));
   }
   const onWeightUpdate = (newWeight: number) => {
     updateProperty(sets, id, set => ({...set, lbs: newWeight}));
