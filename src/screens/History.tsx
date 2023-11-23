@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
-import {Calendar} from 'react-native-calendars'; 
+import { Calendar } from '@Components';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '../navigation/AppStackNavigator';
 
@@ -10,14 +10,8 @@ export const History = ({ navigation }: Props) => {
     <>
       <Text>Calendar</Text>
       <Calendar 
-        onDayPress={day => {
-          let date = new Date(day.dateString);
-          console.log(date.toISOString());
-
+        onDayPress={ date => {
           navigation.navigate('Workout', {dateISOString: date.toISOString()});
-        }}
-        markedDates={{
-          '2023-11-02': {selected: true}
         }}
       />
     </>
