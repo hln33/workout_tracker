@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AppStackParamList } from '../../navigation/AppStackNavigator';
+import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
 import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
@@ -33,8 +33,6 @@ export const Workout = ({ route }: Props) => {
 
   return (
     <View style={styles.workout}>
-      {/* <Timer /> */}
-
       <TextInput placeholder={name} onChangeText={newName => setWorkout({ ...workout, name: newName })} />
       <TextInput 
         multiline={true}

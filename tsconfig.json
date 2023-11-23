@@ -11,6 +11,9 @@
       ],
       "@Contexts": [
         "./src/contexts/index"
+      ],
+      "@Navigation": [
+        "./src/navigation/index"
       ]
     }
   },

@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { CurrentWorkoutProvider } from '@Contexts';
-import { AppStackNavigator } from './src/navigation/AppStackNavigator';
+import { AppStackNavigator } from '@Navigation';
 
 
 const App = () => {
