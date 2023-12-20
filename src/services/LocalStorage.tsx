@@ -3,7 +3,6 @@ import { WorkoutType } from '@Types';
 
 export const saveWorkout = async (workout:WorkoutType) => {
   console.log('saving workout to local storage');
-
   const key = workout.timestamp.toISOString().substring(0, 10);
   const value = JSON.stringify(workout);
   try {

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { Button, FlatList, StyleSheet, TextInput, View } from 'react-native';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
-import { saveWorkout, getWorkout } from '@Services';
-import { Exercise, WorkoutType } from '@Types';
+import { getWorkout } from '@Services';
+import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 
 const styles = StyleSheet.create({
@@ -34,14 +34,12 @@ export const Workout = ({ route }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const val = await getWorkout(new Date(dateISOString)); 
-      if (val) {
-        updateWorkout(val);
-      }
+      const fetchedWorkout = val ?? {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date(dateISOString)};
+      updateWorkout(fetchedWorkout);
     }
   
-    workout.timestamp = new Date(dateISOString);
     fetchData();
-  }, []);
+  }, [dateISOString]);
 
   return (
     <View style={styles.workout}>

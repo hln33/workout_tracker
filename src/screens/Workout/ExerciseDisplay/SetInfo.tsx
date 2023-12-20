@@ -2,7 +2,6 @@ import { StyleSheet, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-n
 import { CheckBox, ListRow, NumericBox, NumericInput, Slidable } from '@Components';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
-import { saveWorkout } from '@Services';
 
 
 const styles = StyleSheet.create({
