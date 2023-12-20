@@ -9,7 +9,6 @@ export type Workout = {
   name: string;
   exercises: Exercise[];
   notes: string;
-  duration_s: number;
 };
 
 export type Exercise = {

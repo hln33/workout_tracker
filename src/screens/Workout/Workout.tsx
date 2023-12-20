@@ -2,7 +2,7 @@ import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-nativ
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
-import { saveWorkout } from '../../services';
+import { saveWorkout } from '@Services';
 import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';

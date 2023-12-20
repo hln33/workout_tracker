@@ -35,7 +35,7 @@
     "@types/react": "^18.2.20",
     "@types/react-native-vector-icons": "^6.4.16",
     "@types/react-test-renderer": "^18.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.3.3"
   },
   "private": true
 }

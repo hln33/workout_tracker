@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Workout } from "../types";
 
 
-const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: [], duration_s: 0};
+const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: []};
 
 
 type CurrentWorkoutContextType = {

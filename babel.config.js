@@ -8,9 +8,10 @@ module.exports = function(api) {
         root: ['.'],
         alias: {
           '@Components': './src/components/index',
-          '@Types' : './src/types.tsx',
           '@Contexts' : './src/contexts/index',
-          '@Navigation' : './src/navigation/index'
+          '@Navigation' : './src/navigation/index',
+          '@Services' : './src/services/index',
+          '@Types' : './src/types.tsx'
         }
       }]
     ]
