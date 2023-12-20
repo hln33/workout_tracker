@@ -4,17 +4,6 @@ import { getCurrentWorkoutSets, useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
 
 
-const styles = StyleSheet.create({
-  slidingComponent: {
-    backgroundColor: 'white',
-  },
-  dimension: {
-    height: 50,
-    width: 400
-  },
-});
-
-
 interface Props {
   exerciseName: string;
   set: Set;
@@ -93,3 +82,14 @@ export const SetInfo = (props: Props) => {
     </Slidable>
   );
 };
+
+
+const styles = StyleSheet.create({
+  slidingComponent: {
+    backgroundColor: 'white',
+  },
+  dimension: {
+    height: 50,
+    width: 400
+  },
+});

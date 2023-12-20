@@ -5,20 +5,6 @@ import { ListRow } from '@Components';
 import { Set } from '@Types'
 
 
-const styles = StyleSheet.create({
-  column: {
-    flex: 1,
-    marginHorizontal: 15,
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  rows: {
-    paddingTop: 5,
-    paddingBottom: 10,
-  },
-});
-
-
 interface Props {
   sets: ArrayLike<Set> | null | undefined;
   name: string;
@@ -44,3 +30,17 @@ export const SetList = (props: Props) => {
     </View>
   );
 };
+
+
+const styles = StyleSheet.create({
+  column: {
+    flex: 1,
+    marginHorizontal: 15,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  rows: {
+    paddingTop: 5,
+    paddingBottom: 10,
+  },
+});

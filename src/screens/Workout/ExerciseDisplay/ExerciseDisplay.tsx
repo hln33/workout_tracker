@@ -5,15 +5,6 @@ import { useCurrentWorkout, getCurrentWorkoutSets } from '@Contexts';
 import { Set } from '@Types'
 
 
-const styles = StyleSheet.create({
-  exerciseName: {
-    fontSize: 20,
-    paddingBottom: 10,
-    color: 'cadetblue',
-  },
-});
-
-
 interface Props {
   name: string;
   style?: StyleProp<ViewStyle>
@@ -44,3 +35,12 @@ export const ExerciseDisplay = (props: Props) => {
     </View>
   );
 };
+
+
+const styles = StyleSheet.create({
+  exerciseName: {
+    fontSize: 20,
+    paddingBottom: 10,
+    color: 'cadetblue',
+  },
+});

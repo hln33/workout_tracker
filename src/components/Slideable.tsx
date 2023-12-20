@@ -3,29 +3,6 @@ import { ReactNode } from "react";
 import { SlideGesture } from '../gestures'
 
 
-const styles = StyleSheet.create({
-  slidable: {
-
-  },
-  overlay: {
-    zIndex: 2,
-  },
-  underflowContainer: {
-    zIndex: 1,
-    flex: 1,
-    position: 'absolute',
-    justifyContent: 'center',
-    backgroundColor: 'red',
-  },
-  underflowText: {
-    color: 'white',
-    textAlign: 'right',
-    fontWeight: 'bold',
-    paddingRight: 15,
-  } 
-});
-
-
 interface Props {
   onSlide: () => void;
   children: ReactNode;
@@ -50,3 +27,26 @@ export const Slidable = (props: Props) => {
     </View>
   );
 };
+
+
+const styles = StyleSheet.create({
+  slidable: {
+
+  },
+  overlay: {
+    zIndex: 2,
+  },
+  underflowContainer: {
+    zIndex: 1,
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'center',
+    backgroundColor: 'red',
+  },
+  underflowText: {
+    color: 'white',
+    textAlign: 'right',
+    fontWeight: 'bold',
+    paddingRight: 15,
+  } 
+});

@@ -9,22 +9,6 @@ import { ExerciseDisplay } from './ExerciseDisplay/index';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 
-const styles = StyleSheet.create({
-  workout: {
-    padding: 15,
-    backgroundColor: 'white',
-  },
-  exerciseList: {
-    paddingVertical: 10,
-  },
-  exercise: {
-    paddingVertical: 10,
-  },
-  addExerciseButton: {
-    paddingVertical: 25,
-  },
-});
-
 type Props = NativeStackScreenProps<AppStackParamList, 'Workout'>
 export const Workout = ({ route }: Props) => {
   const { workout, updateWorkout } = useCurrentWorkout();
@@ -62,3 +46,20 @@ export const Workout = ({ route }: Props) => {
     </View>
   );
 };
+
+
+const styles = StyleSheet.create({
+  workout: {
+    padding: 15,
+    backgroundColor: 'white',
+  },
+  exerciseList: {
+    paddingVertical: 10,
+  },
+  exercise: {
+    paddingVertical: 10,
+  },
+  addExerciseButton: {
+    paddingVertical: 25,
+  },
+});

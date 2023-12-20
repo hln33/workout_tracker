@@ -2,15 +2,6 @@ import { StyleSheet, StyleProp,  View, ViewStyle } from 'react-native';
 import { ReactNode } from 'react';
 
 
-const styles = StyleSheet.create({
-  box: {
-    padding: 5,
-    borderRadius: 5,
-    backgroundColor: 'lightgray',
-  },
-});
-
-
 interface Props {
   children: ReactNode;
   width: number;
@@ -25,3 +16,12 @@ export const NumericBox = (props: Props) => {
     </View>
   );
 };
+
+
+const styles = StyleSheet.create({
+  box: {
+    padding: 5,
+    borderRadius: 5,
+    backgroundColor: 'lightgray',
+  },
+});

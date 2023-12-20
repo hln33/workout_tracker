@@ -2,20 +2,6 @@ import { StyleSheet } from 'react-native';
 import { Pressable, Text } from 'react-native';
 
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 15,
-  },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-});
-
-
 interface Props {
   onAdd: () => void;
   text: string,
@@ -36,3 +22,17 @@ export const AddButton = (props: Props) => {
     </>
   );
 };
+
+
+const styles = StyleSheet.create({
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    borderRadius: 15,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+});

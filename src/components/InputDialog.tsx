@@ -1,5 +1,23 @@
 import { Modal, StyleSheet, View } from 'react-native';
 
+
+interface Props {
+  visible: boolean
+  children: React.ReactNode
+}
+export const InputDialog = (props: Props) => {
+  return (
+    <Modal visible={props.visible}>
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          {props.children}
+        </View>
+      </View>
+    </Modal>
+  );
+}
+
+
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -23,20 +41,3 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
-
-
-interface Props {
-  visible: boolean
-  children: React.ReactNode
-}
-export const InputDialog = (props: Props) => {
-  return (
-    <Modal visible={props.visible}>
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          {props.children}
-        </View>
-      </View>
-    </Modal>
-  );
-}
