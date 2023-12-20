@@ -34,7 +34,7 @@ export const Workout = ({ route }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const val = await getWorkout(new Date(dateISOString)); 
-      if (val !== null) {
+      if (val) {
         setWorkout(val);
       }
     }

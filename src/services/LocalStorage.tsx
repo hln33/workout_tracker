@@ -25,7 +25,7 @@ export const getWorkout = async (date:Date): Promise<Workout|null> => {
 }
 
 const parseWorkout = (value: string|null): Workout|null => {
-  if (value === null) {
+  if (!value) {
     return null;
   }
 
