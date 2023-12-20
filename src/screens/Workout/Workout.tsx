@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, TextInput, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
@@ -33,13 +33,15 @@ export const Workout = ({ route }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const val = await getWorkout(new Date(dateISOString));
-      console.log(val)
+      const val = await getWorkout(new Date(dateISOString)); 
+      if (val !== null) {
+        setWorkout(val);
+      }
     }
   
     workout.timestamp = new Date(dateISOString);
     fetchData();
-  })
+  }, []);
 
   return (
     <View style={styles.workout}>
