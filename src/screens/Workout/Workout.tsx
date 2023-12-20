@@ -61,11 +61,6 @@ export const Workout = ({ route }: Props) => {
         style={styles.addExerciseButton}
         onAdd={(exer: Exercise) => updateWorkout({ ...workout, exercises: [...exercises, exer] })} 
       />
-
-      <Button 
-        title='save'
-        onPress={() => saveWorkout(workout)}
-      />
     </View>
   );
 };
