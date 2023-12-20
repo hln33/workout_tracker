@@ -27,12 +27,7 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps<AppStackParamList, 'Workout'>
 export const Workout = ({ route }: Props) => {
-  const updateWorkout = (updatedWorkout: WorkoutType) => {
-    setWorkout(updatedWorkout);
-    saveWorkout(updatedWorkout);
-  }
-
-  const { workout, setWorkout } = useCurrentWorkout();
+  const { workout, updateWorkout } = useCurrentWorkout();
   const { name, notes, exercises } = workout;
   const { dateISOString } = route.params;
 
@@ -40,7 +35,7 @@ export const Workout = ({ route }: Props) => {
     const fetchData = async () => {
       const val = await getWorkout(new Date(dateISOString)); 
       if (val) {
-        setWorkout(val);
+        updateWorkout(val);
       }
     }
   

@@ -29,7 +29,7 @@ export const SetInfo = (props: Props) => {
     const isComplete = set ? set.isComplete: false;
     return { weight, reps, isComplete };
   };
-  const { workout, setWorkout } = useCurrentWorkout();
+  const { workout, updateWorkout } = useCurrentWorkout();
   const id = props.set.id;
   const sets = getCurrentWorkoutSets(workout, props.exerciseName);
   const { weight, reps, isComplete } = getState(sets.find(s => s.id === id));
@@ -38,10 +38,7 @@ export const SetInfo = (props: Props) => {
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.exerciseName ? {...e, sets: updatedSets} : e);
     updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
-    
-    let updatedWorkout = {...workout, exercises: updatedExercises};
-    setWorkout(updatedWorkout);
-    saveWorkout(updatedWorkout);
+    updateWorkout({...workout, exercises: updatedExercises});
   };
   const updateProperty = (sets: Set[], id: number, updateFunction: (set: Set) => Set): void => {
     updateWorkoutSets(sets.map(s => (s.id === id) ? updateFunction(s) : s));

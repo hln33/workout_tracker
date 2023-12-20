@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Workout } from '@Types';
+import { WorkoutType } from '@Types';
 
-export const saveWorkout = async (workout:Workout) => {
+export const saveWorkout = async (workout:WorkoutType) => {
   console.log('saving workout to local storage');
 
   const key = workout.timestamp.toISOString().substring(0, 10);
@@ -13,7 +13,7 @@ export const saveWorkout = async (workout:Workout) => {
   }
 }
 
-export const getWorkout = async (date:Date): Promise<Workout|null> => {
+export const getWorkout = async (date:Date): Promise<WorkoutType|null> => {
   console.log('getting workout from local storage')
   const key = date.toISOString().substring(0, 10);
   try {
@@ -24,12 +24,12 @@ export const getWorkout = async (date:Date): Promise<Workout|null> => {
   }
 }
 
-const parseWorkout = (value: string|null): Workout|null => {
+const parseWorkout = (value: string|null): WorkoutType|null => {
   if (!value) {
     return null;
   }
 
-  const workout: Workout = JSON.parse(value);
+  const workout: WorkoutType = JSON.parse(value);
   workout.timestamp = new Date(workout.timestamp);
   return workout;
 }
