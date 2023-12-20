@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StackParamList } from '../types'
+import { AppStackParamList } from '@Navigation'
 
 
 const styles = StyleSheet.create({
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 
-type Props = NativeStackScreenProps<StackParamList, 'Home'>
+type Props = NativeStackScreenProps<AppStackParamList, 'Home'>
 export const Home = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>

@@ -1,10 +1,3 @@
-export type StackParamList = {
-    History: undefined;
-    Home: undefined;
-    Profile: undefined;
-    Workout: { dateISOString: string };
-};
-
 export type Workout = {
   name: string;
   exercises: Exercise[];
