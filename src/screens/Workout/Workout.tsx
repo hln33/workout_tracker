@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
-import { saveWorkout } from '@Services';
+import { saveWorkout, getWorkout } from '@Services';
 import { Exercise } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';
@@ -29,6 +30,16 @@ export const Workout = ({ route }: Props) => {
   const { workout, setWorkout } = useCurrentWorkout();
   const { name, notes, exercises } = workout;
   const { dateISOString } = route.params;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const val = await getWorkout('key');
+      console.log('getting workout from local storage');
+      console.log(val)
+    }
+    
+    fetchData();
+  })
 
   return (
     <View style={styles.workout}>
