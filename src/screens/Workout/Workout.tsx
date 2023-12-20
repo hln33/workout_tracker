@@ -33,11 +33,11 @@ export const Workout = ({ route }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const val = await getWorkout('key');
-      console.log('getting workout from local storage');
+      const val = await getWorkout(new Date(dateISOString));
       console.log(val)
     }
-    
+  
+    workout.timestamp = new Date(dateISOString);
     fetchData();
   })
 
@@ -49,8 +49,6 @@ export const Workout = ({ route }: Props) => {
         placeholder={notes}
         onChangeText={e => setWorkout({ ...workout, notes: e })}
       />  
-
-      <Text>{ dateISOString }</Text>
 
       <FlatList
         style={styles.exerciseList}

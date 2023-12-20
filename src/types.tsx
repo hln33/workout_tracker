@@ -9,6 +9,7 @@ export type Workout = {
   name: string;
   exercises: Exercise[];
   notes: string;
+  timestamp: Date;
 };
 
 export type Exercise = {
