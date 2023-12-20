@@ -1,14 +1,14 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { useContext } from "react";
-import { Workout } from "../types";
+import { WorkoutType } from "../types";
 
 
-const DefaultWorkout: Workout = {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date()};
+const DefaultWorkout: WorkoutType = {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date()};
 
 
 type CurrentWorkoutContextType = {
-  workout: Workout;
-  setWorkout: (workout: Workout) => void;
+  workout: WorkoutType;
+  setWorkout: (workout: WorkoutType) => void;
 };
 const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
   workout: DefaultWorkout,
@@ -16,7 +16,7 @@ const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
 });
  
 
-export const getCurrentWorkoutSets = (workout: Workout, exerName: string) => {
+export const getCurrentWorkoutSets = (workout: WorkoutType, exerName: string) => {
   const exercise = workout.exercises.find(e => e.name === exerName);
   return exercise?.sets ?? [];
 };
@@ -31,7 +31,7 @@ interface Props {
   children: ReactNode;
 };
 export const CurrentWorkoutProvider = (props: Props) => {
-  const [workout, setWorkout] = useState<Workout>(DefaultWorkout);
+  const [workout, setWorkout] = useState<WorkoutType>(DefaultWorkout);
   
   return (
     <CurrentWorkoutContext.Provider value={{ workout, setWorkout }}>

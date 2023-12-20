@@ -2,6 +2,7 @@ import { StyleSheet, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-n
 import { CheckBox, ListRow, NumericBox, NumericInput, Slidable } from '@Components';
 import { getCurrentWorkoutSets, useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
+import { saveWorkout } from '@Services';
 
 
 const styles = StyleSheet.create({
@@ -37,7 +38,10 @@ export const SetInfo = (props: Props) => {
   const updateWorkoutSets = (updatedSets: Set[]) => {
     let updatedExercises = workout.exercises.map(e => e.name === props.exerciseName ? {...e, sets: updatedSets} : e);
     updatedExercises = updatedExercises.filter(e => e.sets.length !== 0);
-    setWorkout({ ...workout, exercises: updatedExercises });
+    
+    let updatedWorkout = {...workout, exercises: updatedExercises};
+    setWorkout(updatedWorkout);
+    saveWorkout(updatedWorkout);
   };
   const updateProperty = (sets: Set[], id: number, updateFunction: (set: Set) => Set): void => {
     updateWorkoutSets(sets.map(s => (s.id === id) ? updateFunction(s) : s));

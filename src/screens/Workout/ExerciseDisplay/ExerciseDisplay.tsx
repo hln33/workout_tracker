@@ -3,6 +3,7 @@ import { SetList } from './SetList';
 import { AddButton } from '@Components';
 import { useCurrentWorkout, getCurrentWorkoutSets } from '@Contexts';
 import { Set } from '@Types'
+import { saveWorkout } from '@Services';
 
 
 const styles = StyleSheet.create({

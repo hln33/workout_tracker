@@ -4,7 +4,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
 import { saveWorkout, getWorkout } from '@Services';
-import { Exercise } from '@Types';
+import { Exercise, WorkoutType } from '@Types';
 import { ExerciseInput } from './ExerciseInput'
 import { ExerciseDisplay } from './ExerciseDisplay/index';
 
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
 
 type Props = NativeStackScreenProps<AppStackParamList, 'Workout'>
 export const Workout = ({ route }: Props) => {
+  const updateWorkout = (updatedWorkout: WorkoutType) => {
+    setWorkout(updatedWorkout);
+    saveWorkout(updatedWorkout);
+  }
+
   const { workout, setWorkout } = useCurrentWorkout();
   const { name, notes, exercises } = workout;
   const { dateISOString } = route.params;
@@ -45,11 +50,11 @@ export const Workout = ({ route }: Props) => {
 
   return (
     <View style={styles.workout}>
-      <TextInput placeholder={name} onChangeText={newName => setWorkout({ ...workout, name: newName })} />
+      <TextInput placeholder={name} onChangeText={newName => updateWorkout({ ...workout, name: newName })} />
       <TextInput 
         multiline={true}
         placeholder={notes}
-        onChangeText={e => setWorkout({ ...workout, notes: e })}
+        onChangeText={e => updateWorkout({ ...workout, notes: e })}
       />  
 
       <FlatList
@@ -59,7 +64,7 @@ export const Workout = ({ route }: Props) => {
       />
       <ExerciseInput 
         style={styles.addExerciseButton}
-        onAdd={(exer: Exercise) => setWorkout({ ...workout, exercises: [...exercises, exer] })} 
+        onAdd={(exer: Exercise) => updateWorkout({ ...workout, exercises: [...exercises, exer] })} 
       />
 
       <Button 

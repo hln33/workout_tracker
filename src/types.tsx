@@ -1,4 +1,4 @@
-export type Workout = {
+export type WorkoutType = {
   name: string;
   exercises: Exercise[];
   notes: string;
