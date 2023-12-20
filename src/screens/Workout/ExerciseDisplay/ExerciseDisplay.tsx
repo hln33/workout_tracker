@@ -22,8 +22,10 @@ interface Props {
 export const ExerciseDisplay = (props: Props) => {
   const { workout, setWorkout } = useCurrentWorkout();
   const updateWorkoutSets = (updatedSets: Set[]) => {
-    let updatedExercises = workout.exercises.map(e => e.name === props.name ? {...e, sets: updatedSets} : e);
-    setWorkout({ ...workout, exercises: updatedExercises });
+    const updatedExercises = workout.exercises.map(e => e.name === props.name ? {...e, sets: updatedSets} : e);
+    const updatedWorkout = { ...workout, exercises: updatedExercises };
+    setWorkout(updatedWorkout);
+    saveWorkout(updatedWorkout);
   };
 
   const exerciseSets = getCurrentWorkoutSets(workout, props.name);
