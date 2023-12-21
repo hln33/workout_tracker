@@ -26,6 +26,7 @@ export const Workout = ({ route }: Props) => {
   }, [dateISOString]);
 
   return (
+  <View style={styles.background}>
     <View style={styles.workout}>
       <TextInput placeholder={name} onChangeText={newName => updateWorkout({ ...workout, name: newName })} />
       <TextInput 
@@ -44,17 +45,23 @@ export const Workout = ({ route }: Props) => {
         onAdd={(exer: Exercise) => updateWorkout({ ...workout, exercises: [...exercises, exer] })} 
       />
     </View>
+  </View>
   );
 };
 
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: 'white'
+  },
   workout: {
     padding: 15,
     backgroundColor: 'white',
   },
   exerciseList: {
     paddingVertical: 10,
+    borderColor: 'black'
   },
   exercise: {
     paddingVertical: 10,

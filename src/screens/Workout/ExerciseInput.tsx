@@ -19,8 +19,8 @@ export const ExerciseInput = (props: Props) => {
       <AddButton 
         onAdd={() => setVisible(true)}
         text={'Add Exercise'}
-        textColor={'skyblue'}
-        backgroundColor={'mintcream'}
+        textColor={'darkblue'}
+        backgroundColor={'cornflowerblue'}
       />
 
       <InputDialog visible={visible}>
