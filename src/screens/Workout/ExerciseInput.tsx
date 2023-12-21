@@ -20,6 +20,7 @@ export const ExerciseInput = (props: Props) => {
         onAdd={() => setVisible(true)}
         text={'Add Exercise'}
         textColor={'darkblue'}
+        size={'medium'}
         backgroundColor={'cornflowerblue'}
       />
 

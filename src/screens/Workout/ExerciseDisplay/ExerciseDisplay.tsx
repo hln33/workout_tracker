@@ -28,6 +28,7 @@ export const ExerciseDisplay = (props: Props) => {
 
       <AddButton 
         onAdd={() => {updateWorkoutSets([...exerciseSets, {id: exerciseSets.length, lbs: 0, reps: 0, isComplete: false}])}}
+        size={'small'}
         text={'Add Set'}
         textColor={'black'}
         backgroundColor={'lightgray'}
