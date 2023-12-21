@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { WorkoutType } from '@Types';
 
 
-const WORKOUT_IDENTIFIER = 'workout:'
+const WORKOUT_IDENTIFIER = 'workout:';
 
 
 export const saveWorkout = async (workout:WorkoutType) => {
@@ -15,7 +15,7 @@ export const saveWorkout = async (workout:WorkoutType) => {
   try {
     await AsyncStorage.setItem(key, value);
   } catch (e) {
-    throw(e)
+    throw(e);
   }
 }
 
@@ -26,8 +26,28 @@ export const getWorkout = async (date:Date): Promise<WorkoutType|null> => {
     const value = await AsyncStorage.getItem(key); 
     return parseWorkout(value);
   } catch (e) {
-    throw(e)
+    throw(e);
   }
+}
+
+export const getAllWorkoutDates = async (): Promise<string[]>  => {
+  console.log('getting all workouts from local storage');
+
+  let keys: readonly string[] = [];
+  try {
+    keys = await AsyncStorage.getAllKeys();
+  } catch (e) {
+    throw(e);
+  }
+
+  const workoutDates: string[] = [];
+  keys.forEach(key => {
+    if (key.startsWith(WORKOUT_IDENTIFIER)) {
+      const dateISOString = key.replace(WORKOUT_IDENTIFIER, '');
+      workoutDates.push(dateISOString);
+    }
+  });
+  return workoutDates;
 }
 
 const parseWorkout = (value: string|null): WorkoutType|null => {

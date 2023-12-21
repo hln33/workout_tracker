@@ -18,7 +18,8 @@ export const Workout = ({ route }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const val = await getWorkout(new Date(dateISOString)); 
-      const fetchedWorkout = val ?? {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date(dateISOString)};
+      const fetchedWorkout = val ?? {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date()};
+      fetchedWorkout.timestamp = new Date(dateISOString);
       updateWorkout(fetchedWorkout);
     }
   

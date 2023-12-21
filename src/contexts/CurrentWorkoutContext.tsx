@@ -3,7 +3,7 @@ import { WorkoutType } from "@Types";
 import { saveWorkout } from "@Services";
 
 
-const DefaultWorkout: WorkoutType = {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date()};
+const DEFAULT_WORKOUT: WorkoutType = {name: 'Workout Name', notes: 'Notes', exercises: [], timestamp: new Date()};
 
 
 type CurrentWorkoutContextType = {
@@ -11,7 +11,7 @@ type CurrentWorkoutContextType = {
   updateWorkout: (workout: WorkoutType) => void;
 };
 const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
-  workout: DefaultWorkout,
+  workout: DEFAULT_WORKOUT,
   updateWorkout: () => null
 });
  
@@ -31,7 +31,7 @@ interface Props {
   children: ReactNode;
 };
 export const CurrentWorkoutProvider = (props: Props) => {
-  const [workout, setWorkout] = useState<WorkoutType>(DefaultWorkout);
+  const [workout, setWorkout] = useState<WorkoutType>(DEFAULT_WORKOUT);
   const updateWorkout = (workout: WorkoutType) => {
     setWorkout(workout);
     saveWorkout(workout);
