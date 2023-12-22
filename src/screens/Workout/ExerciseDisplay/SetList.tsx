@@ -13,15 +13,9 @@ interface Props {
 export const SetList = (props: Props) => {
   return (
     <View>
-      <ListRow>
-        <Text style={styles.column}>Set</Text>
-        <Text style={styles.column}>Weight</Text>
-        <Text style={styles.column}>Reps</Text>
-        <Icon style={styles.column} name='check'/>
-      </ListRow>
-
       <FlatList
         style={styles.rows}
+        ListHeaderComponent={<HeaderRow/>}
         data={props.sets}
         renderItem={({item}) => (
             <SetInfo exerciseName={props.name} set={item} columnStyle={styles.column}/>
@@ -30,6 +24,18 @@ export const SetList = (props: Props) => {
     </View>
   );
 };
+
+
+const HeaderRow = () => {
+  return (
+    <ListRow>
+      <Text style={styles.column}>Set</Text>
+      <Text style={styles.column}>Weight</Text>
+      <Text style={styles.column}>Reps</Text>
+      <Icon style={styles.column} name='check'/>
+    </ListRow>
+  )
+}
 
 
 const styles = StyleSheet.create({

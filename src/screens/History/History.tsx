@@ -4,6 +4,7 @@ import { Calendar } from '@Components';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
 import { getAllWorkoutDates } from '@Services';
+import { WorkoutList } from './WorkoutList';
 
 
 interface MarkedDates {
@@ -36,6 +37,8 @@ export const History = ({ navigation }: Props) => {
         }}
         markedDates={markedDates}
       />
+
+      <WorkoutList />
     </>
   );
 };
