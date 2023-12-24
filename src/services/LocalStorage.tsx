@@ -30,24 +30,46 @@ export const getWorkout = async (date:Date): Promise<WorkoutType|null> => {
   }
 }
 
-export const getAllWorkoutDates = async (): Promise<string[]>  => {
+export const getAllWorkouts = async () => {
   console.log('getting all workouts from local storage');
 
+  const workouts: WorkoutType[] = [];
+  let keys: readonly string[] = await getAllKeys();
+  await Promise.all(keys.map(async key => {
+    if (!key.startsWith(WORKOUT_IDENTIFIER)) { return; }
+
+    const dateISOString = key.replace(WORKOUT_IDENTIFIER, '');
+    const workout = await getWorkout(new Date(dateISOString));
+    if (workout !== null) {
+      workouts.push(workout);
+    }
+  }))
+
+  return workouts;
+}
+
+// export const getAllWorkoutDates = async (): Promise<string[]>  => {
+//   console.log('getting all workout dates from local storage');
+
+//   let keys: readonly string[] = await getAllKeys();
+//   const workoutDates: string[] = [];
+//   keys.forEach(key => {
+//     if (key.startsWith(WORKOUT_IDENTIFIER)) {
+//       const dateISOString = key.replace(WORKOUT_IDENTIFIER, '');
+//       workoutDates.push(dateISOString);
+//     }
+//   });
+//   return workoutDates;
+// }
+
+const getAllKeys = async (): Promise<readonly string[]> => {
   let keys: readonly string[] = [];
   try {
     keys = await AsyncStorage.getAllKeys();
   } catch (e) {
     throw(e);
   }
-
-  const workoutDates: string[] = [];
-  keys.forEach(key => {
-    if (key.startsWith(WORKOUT_IDENTIFIER)) {
-      const dateISOString = key.replace(WORKOUT_IDENTIFIER, '');
-      workoutDates.push(dateISOString);
-    }
-  });
-  return workoutDates;
+  return keys;
 }
 
 const parseWorkout = (value: string|null): WorkoutType|null => {

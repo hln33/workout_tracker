@@ -25,7 +25,6 @@ export const ExerciseDisplay = (props: Props) => {
         name={props.name}
         sets={exerciseSets}
       />
-
       <AddButton 
         onAdd={() => {updateWorkoutSets([...exerciseSets, {id: exerciseSets.length, lbs: 0, reps: 0, isComplete: false}])}}
         size={'small'}
