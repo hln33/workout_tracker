@@ -9,8 +9,6 @@ export const saveWorkout = async (workout:WorkoutType) => {
   console.log('saving workout to local storage');
   const key = WORKOUT_IDENTIFIER + workout.timestamp.toISOString().substring(0, 10);
   const value = JSON.stringify(workout);
-  // console.log(key);
-  // console.log(value);
 
   try {
     await AsyncStorage.setItem(key, value);
@@ -47,20 +45,6 @@ export const getAllWorkouts = async () => {
 
   return workouts;
 }
-
-// export const getAllWorkoutDates = async (): Promise<string[]>  => {
-//   console.log('getting all workout dates from local storage');
-
-//   let keys: readonly string[] = await getAllKeys();
-//   const workoutDates: string[] = [];
-//   keys.forEach(key => {
-//     if (key.startsWith(WORKOUT_IDENTIFIER)) {
-//       const dateISOString = key.replace(WORKOUT_IDENTIFIER, '');
-//       workoutDates.push(dateISOString);
-//     }
-//   });
-//   return workoutDates;
-// }
 
 const getAllKeys = async (): Promise<readonly string[]> => {
   let keys: readonly string[] = [];

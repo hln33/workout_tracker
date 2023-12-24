@@ -3,8 +3,21 @@ import { useEffect, useState } from 'react';
 import { Calendar } from '@Components';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AppStackParamList } from '@Navigation';
-import { getAllWorkoutDates, getAllWorkouts } from '@Services';
+import { getAllWorkouts } from '@Services';
+import { WorkoutType } from '@Types';
 import { WorkoutList } from './WorkoutList';
+
+
+const extractWorkoutDates = (workouts: WorkoutType[]): string[] => {
+  const dates: string[] = [];
+  workouts.forEach(workout => {
+    let date = workout.timestamp.
+            toISOString().
+            substring(0, 10);
+    dates.push(date);
+  });
+  return dates;
+}
 
 
 interface MarkedDates {
@@ -17,15 +30,14 @@ export const History = ({ navigation }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const workouts = await getAllWorkouts();
-      console.log(workouts);
-      console.log(workouts.length);
 
-      // const selectedDates = workoutDates.reduce((acc, date) => {
-      //   acc[date] = { selected: true }
-      //   return acc;
-      // }, {} as MarkedDates); 
+      const workoutDates = extractWorkoutDates(workouts);
+      const selectedDates = workoutDates.reduce((acc, date) => {
+        acc[date] = { selected: true }
+        return acc;
+      }, {} as MarkedDates); 
 
-      // setMarkedDates(selectedDates);
+      setMarkedDates(selectedDates);
     }
   
     fetchData();
