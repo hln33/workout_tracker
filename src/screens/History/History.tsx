@@ -17,14 +17,15 @@ const extractWorkoutDates = (workouts: WorkoutType[]): string[] => {
     dates.push(date);
   });
   return dates;
-}
+};
 
 
 interface MarkedDates {
-  [date: string]: { selected: boolean }
-}
+  [date: string]: { selected: boolean };
+};
 type Props = NativeStackScreenProps<AppStackParamList, 'History'>
 export const History = ({ navigation }: Props) => {
+  const [workouts, setWorkouts] = useState<WorkoutType[]>([]);
   const [markedDates, setMarkedDates] = useState<MarkedDates>({});
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export const History = ({ navigation }: Props) => {
       }, {} as MarkedDates); 
 
       setMarkedDates(selectedDates);
+      setWorkouts(workouts);
     }
   
     fetchData();
@@ -53,7 +55,7 @@ export const History = ({ navigation }: Props) => {
         markedDates={markedDates}
       />
 
-      <WorkoutList />
+      <WorkoutList workouts={workouts}/>
     </>
   );
 };
