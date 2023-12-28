@@ -9,6 +9,9 @@
       "@Contexts": [
         "./src/contexts/index"
       ],
+      "@Hooks": [
+        "./src/hooks/index",
+      ],
       "@Navigation": [
         "./src/navigation/index"
       ],

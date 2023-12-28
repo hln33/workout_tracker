@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react';
 import { WorkoutType } from '@Types';
 import { getAllWorkouts } from '@Services';
+import { workoutsToDateStrings } from '@Utils';
 
-const extractWorkoutDates = (workouts: WorkoutType[]): string[] => {
-  const dates: string[] = [];
-  workouts.forEach(workout => {
-    let date = workout.timestamp
-                      .toISOString()
-                      .substring(0, 10);
-    dates.push(date);
-  });
-  return dates;
-};
 
 interface MarkedDates {
   [date: string]: { selected: boolean };
@@ -23,7 +14,7 @@ export const useWorkouts = (): [WorkoutType[], MarkedDates] => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedWorkouts = await getAllWorkouts();
-      const workoutDates = extractWorkoutDates(fetchedWorkouts);
+      const workoutDates = workoutsToDateStrings(fetchedWorkouts);
       const selectedDates = workoutDates.reduce((acc, date) => {
         acc[date] = { selected: true }
         return acc;
