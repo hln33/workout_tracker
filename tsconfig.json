@@ -24,7 +24,8 @@
       "@Utils": [
         "./src/utils/index"
       ]
-    }
+    },
+    "strict": true
   },
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
