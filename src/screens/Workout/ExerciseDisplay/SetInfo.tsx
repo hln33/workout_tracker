@@ -1,7 +1,8 @@
 import { StyleSheet, StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
 import { CheckBox, ListRow, NumericBox, NumericInput, Slidable } from '@Components';
-import { getCurrentWorkoutSets, useCurrentWorkout } from '@Contexts';
+import { useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
+import { getCurrentWorkoutSets } from '@Utils';
 
 
 interface Props {

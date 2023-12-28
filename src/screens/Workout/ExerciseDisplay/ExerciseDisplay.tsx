@@ -1,8 +1,9 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SetList } from './SetList';
 import { AddButton } from '@Components';
-import { useCurrentWorkout, getCurrentWorkoutSets } from '@Contexts';
-import { Set } from '@Types'
+import { useCurrentWorkout } from '@Contexts';
+import { Set } from '@Types';
+import { getCurrentWorkoutSets } from '@Utils';
 
 
 interface Props {

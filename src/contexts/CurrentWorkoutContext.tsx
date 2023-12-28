@@ -14,12 +14,6 @@ const CurrentWorkoutContext = createContext<CurrentWorkoutContextType>({
   workout: DEFAULT_WORKOUT,
   updateWorkout: () => null
 });
- 
-
-export const getCurrentWorkoutSets = (workout: WorkoutType, exerName: string) => {
-  const exercise = workout.exercises.find(e => e.name === exerName);
-  return exercise?.sets ?? [];
-};
 
 
 export const useCurrentWorkout = () => {

@@ -11,7 +11,8 @@ module.exports = function(api) {
           '@Contexts' : './src/contexts/index',
           '@Navigation' : './src/navigation/index',
           '@Services' : './src/services/index',
-          '@Types' : './src/types.tsx'
+          '@Types' : './src/types.tsx',
+          '@Utils' : './src/utils/index'
         }
       }]
     ]

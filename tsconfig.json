@@ -17,6 +17,9 @@
       ],
       "@Services": [
         "./src/services/index"
+      ],
+      "@Utils": [
+        "./src/utils/index"
       ]
     }
   },
