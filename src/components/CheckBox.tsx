@@ -1,18 +1,17 @@
-import {default as CBDependency} from 'expo-checkbox';
-
+import { default as CBDependency } from 'expo-checkbox';
 
 interface Props {
-  checked: boolean
+  checked: boolean;
   onValueChange: (value: boolean) => void;
-};
+}
 export const CheckBox = (props: Props) => {
   return (
     <>
-      <CBDependency 
+      <CBDependency
         value={props.checked}
         onValueChange={props.onValueChange}
         color={props.checked ? 'green' : undefined}
       />
     </>
   );
-}
+};

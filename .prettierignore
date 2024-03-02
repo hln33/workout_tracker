@@ -1,0 +1,9 @@
+.vscode/
+.expo/
+.gitignore/
+assets/
+node_modules/
+
+# config files
+**/*.json
+babel.config.js

@@ -1,17 +1,16 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
 
-
 interface Props {
   onAdd: () => void;
-  backgroundColor: string,
-  size: string,
-  text: string,
-  textColor: string
-};
+  backgroundColor: string;
+  size: string;
+  text: string;
+  textColor: string;
+}
 export const AddButton = (props: Props) => {
   let buttonHeight = undefined;
   let buttonFontSize = undefined;
-  switch(props.size) {
+  switch (props.size) {
     case 'medium':
       buttonHeight = 50;
       buttonFontSize = 22;
@@ -24,18 +23,25 @@ export const AddButton = (props: Props) => {
 
   return (
     <>
-      <Pressable 
-        style={[styles.button, {backgroundColor: props.backgroundColor, height: buttonHeight}]}
+      <Pressable
+        style={[
+          styles.button,
+          { backgroundColor: props.backgroundColor, height: buttonHeight },
+        ]}
         onPress={props.onAdd}
       >
-        <Text style={[styles.buttonText, {color: props.textColor, fontSize: buttonFontSize}]}>
+        <Text
+          style={[
+            styles.buttonText,
+            { color: props.textColor, fontSize: buttonFontSize },
+          ]}
+        >
           {props.text}
         </Text>
       </Pressable>
     </>
   );
 };
-
 
 const styles = StyleSheet.create({
   button: {
@@ -45,6 +51,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   buttonText: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });

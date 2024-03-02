@@ -3,7 +3,6 @@ import { WorkoutType } from '@Types';
 import { getAllWorkouts } from '@Services';
 import { workoutsToDateStrings } from '@Utils';
 
-
 interface MarkedDates {
   [date: string]: { selected: boolean };
 }
@@ -23,7 +22,7 @@ export const useWorkouts = (): [WorkoutType[], MarkedDates] => {
       setWorkouts(fetchedWorkouts);
       setMarkedDates(selectedDates);
     };
-  
+
     fetchData();
   }, []);
 
