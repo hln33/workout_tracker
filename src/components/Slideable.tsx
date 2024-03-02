@@ -1,5 +1,5 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { SlideGesture } from '../gestures';
 
 interface Props {

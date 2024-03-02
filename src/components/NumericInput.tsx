@@ -1,4 +1,5 @@
 import { TextInput, View, ViewStyle } from 'react-native';
+import React from 'react';
 
 interface Props {
   style?: ViewStyle;

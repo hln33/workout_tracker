@@ -1,4 +1,5 @@
 import { default as CBDependency } from 'expo-checkbox';
+import React from 'react-native';
 
 interface Props {
   checked: boolean;

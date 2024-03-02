@@ -6,6 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import React from 'react';
 import {
   CheckBox,
   ListRow,
@@ -60,7 +61,7 @@ export const SetInfo = (props: Props) => {
     updateProperty(sets, id, (set) => ({ ...set, isComplete: newComplete }));
   };
   const onDelete = () => {
-    let updatedSets = sets
+    const updatedSets = sets
       .filter((set) => set.id !== id)
       .map((set, newId) => ({ ...set, id: newId }));
     updateWorkoutSets(updatedSets);

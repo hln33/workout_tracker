@@ -31,7 +31,7 @@ export const getAllWorkouts = async () => {
   console.log('getting all workouts from local storage');
 
   const workouts: WorkoutType[] = [];
-  let keys: readonly string[] = await getAllKeys();
+  const keys: readonly string[] = await getAllKeys();
   await Promise.all(
     keys.map(async (key) => {
       if (!key.startsWith(WORKOUT_IDENTIFIER)) {

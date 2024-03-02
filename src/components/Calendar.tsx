@@ -1,4 +1,5 @@
 import { Calendar as CalendarDependency } from 'react-native-calendars';
+import React from 'react-native';
 
 interface Props {
   onDayPress: (date: Date) => void;

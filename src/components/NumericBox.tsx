@@ -1,5 +1,5 @@
 import { StyleSheet, StyleProp, View, ViewStyle } from 'react-native';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;

@@ -1,25 +1,6 @@
 import { WorkoutType } from '@Types';
 import { SectionList, StyleSheet, Text, View } from 'react-native';
-import { useEffect, useState } from 'react';
-
-const DATA = [
-  {
-    title: 'Main dishes',
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    title: 'Sides',
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    title: 'Drinks',
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    title: 'Desserts',
-    data: ['Cheese Cake', 'Ice Cream'],
-  },
-];
+import React, { useEffect, useState } from 'react';
 
 interface Data {
   title: string;

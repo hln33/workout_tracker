@@ -1,8 +1,9 @@
 import { Modal, StyleSheet, View } from 'react-native';
+import React, {ReactNode} from 'react';
 
 interface Props {
   visible: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 export const InputDialog = (props: Props) => {
   return (

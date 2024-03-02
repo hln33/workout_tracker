@@ -10,7 +10,7 @@ import {
   GestureDetector,
 } from 'react-native-gesture-handler';
 import { StyleProp, ViewStyle } from 'react-native';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 const EVENT_THRESHOLD = -135;
 interface Props {

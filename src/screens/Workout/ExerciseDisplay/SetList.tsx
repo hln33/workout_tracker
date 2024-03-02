@@ -6,6 +6,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { SetInfo } from './SetInfo';
 import { ListRow } from '@Components';
