@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';

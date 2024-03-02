@@ -1,4 +1,5 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import React from 'react';
 import { SetList } from './SetList';
 import { AddButton } from '@Components';
 import { useCurrentWorkout } from '@Contexts';

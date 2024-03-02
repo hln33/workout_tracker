@@ -1,4 +1,5 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
+import React from 'react';
 
 interface Props {
   onAdd: () => void;
