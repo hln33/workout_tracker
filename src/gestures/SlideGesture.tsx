@@ -1,33 +1,39 @@
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
-import { Gesture, GestureHandlerRootView, GestureDetector } from "react-native-gesture-handler";
-import { StyleProp, ViewStyle } from "react-native";
-import { ReactNode } from "react";
-
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import {
+  Gesture,
+  GestureHandlerRootView,
+  GestureDetector,
+} from 'react-native-gesture-handler';
+import { StyleProp, ViewStyle } from 'react-native';
+import { ReactNode } from 'react';
 
 const EVENT_THRESHOLD = -135;
 interface Props {
   onSlide: () => void;
   children: ReactNode;
-  style?: StyleProp<ViewStyle>,
-  sizeStyle?: StyleProp<ViewStyle>
-};
+  style?: StyleProp<ViewStyle>;
+  sizeStyle?: StyleProp<ViewStyle>;
+}
 export const SlideGesture = (props: Props) => {
   const offset = useSharedValue(0);
 
   const pan = Gesture.Pan()
-    .onBegin(() => {
-
-    })
-    .onChange(e => {
+    .onBegin(() => {})
+    .onChange((e) => {
       const swipedLeft = e.velocityX < 0;
       if (swipedLeft) {
-       offset.value = e.translationX;
+        offset.value = e.translationX;
       }
     })
     .onFinalize(() => {
       offset.value = withTiming(0, {
         duration: 600,
-        easing: Easing.bezier(0.25, 0.1, 0.25, 1)
+        easing: Easing.bezier(0.25, 0.1, 0.25, 1),
       });
 
       // console.log(offset.value);
@@ -38,9 +44,7 @@ export const SlideGesture = (props: Props) => {
     .runOnJS(true);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: offset.value },
-    ],
+    transform: [{ translateX: offset.value }],
   }));
 
   return (

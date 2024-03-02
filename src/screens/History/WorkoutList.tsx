@@ -1,7 +1,6 @@
 import { WorkoutType } from '@Types';
-import { SectionList, StyleSheet,  Text, View } from 'react-native';
+import { SectionList, StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
-
 
 const DATA = [
   {
@@ -22,19 +21,18 @@ const DATA = [
   },
 ];
 
-
 interface Data {
   title: string;
   data: WorkoutType[];
-};
+}
 interface Props {
   workouts: WorkoutType[];
-};
+}
 export const WorkoutList = (props: Props) => {
   const [data, setData] = useState<Data[]>([]);
   useEffect(() => {
-    const newData: Data[] = [{title: 'Workouts', data: []}]
-    props.workouts.forEach(workout => {
+    const newData: Data[] = [{ title: 'Workouts', data: [] }];
+    props.workouts.forEach((workout) => {
       newData[0].data.push(workout);
     });
     setData(newData);
@@ -43,21 +41,20 @@ export const WorkoutList = (props: Props) => {
   return (
     <View>
       <Text>Workouts:</Text>
-      <SectionList 
+      <SectionList
         sections={data}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <View style={styles.item}>
             <Text style={styles.title}>{item.timestamp.toISOString()}</Text>
           </View>
         )}
-        renderSectionHeader={({section: {title}}) => (
+        renderSectionHeader={({ section: { title } }) => (
           <Text style={styles.header}>{title}</Text>
         )}
       />
     </View>
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
