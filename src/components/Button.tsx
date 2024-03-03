@@ -8,7 +8,7 @@ interface Props {
   text: string;
   textColor: string;
 }
-export const AddButton = (props: Props) => {
+export const Button = (props: Props) => {
   let buttonHeight = undefined;
   let buttonFontSize = undefined;
   switch (props.size) {

@@ -3,9 +3,8 @@ import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import { AppStackParamList } from '@Navigation';
 import { useCurrentWorkout } from '@Contexts';
 import { getWorkout } from '@Services';
-import { Exercise } from '@Types';
-import { ExerciseInput } from './ExerciseInput';
-import { ExerciseDisplay } from './ExerciseDisplay/index';
+import { AddNewExercise } from './AddNewExercise';
+import { ExerciseDisplay } from './ExerciseDisplay';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type Props = NativeStackScreenProps<AppStackParamList, 'Workout'>;
@@ -52,12 +51,8 @@ export const Workout = ({ route }: Props) => {
             <ExerciseDisplay style={styles.exercise} name={item.name} />
           )}
         />
-        <ExerciseInput
-          style={styles.addExerciseButton}
-          onAdd={(exer: Exercise) =>
-            updateWorkout({ ...workout, exercises: [...exercises, exer] })
-          }
-        />
+
+        <AddNewExercise />
       </View>
     </View>
   );
@@ -78,8 +73,5 @@ const styles = StyleSheet.create({
   },
   exercise: {
     paddingVertical: 10,
-  },
-  addExerciseButton: {
-    paddingVertical: 25,
   },
 });
