@@ -1,6 +1,7 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import React from 'react';
 import { SetList } from './SetList';
+import { OptionsModal } from './OptionsModal';
 import { Button } from '@Components';
 import { useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
@@ -22,7 +23,10 @@ export const ExerciseDisplay = (props: Props) => {
   const exerciseSets = getCurrentWorkoutSets(workout, props.name);
   return (
     <View style={props.style}>
-      <Text style={styles.exerciseName}>{props.name}</Text>
+      <View style={styles.header}>
+        <Text style={styles.exerciseName}>{props.name}</Text>
+        <OptionsModal />
+      </View>
 
       <SetList name={props.name} sets={exerciseSets} />
       <Button
@@ -42,9 +46,19 @@ export const ExerciseDisplay = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+  },
+  options: {
+    paddingTop: 6,
+    borderWidth: 1,
+    fontSize: 15,
+  },
   exerciseName: {
     fontSize: 20,
-    paddingBottom: 10,
     color: 'cadetblue',
+    borderWidth: 1,
   },
 });
