@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Text, TextInput, View, StyleSheet } from 'react-native';
-import { InputDialog } from '@Components';
+import { PopupDialog } from '@Components';
 import { useCurrentWorkout } from '@Contexts';
 import { Exercise } from '@Types';
 
@@ -24,7 +24,7 @@ export const NewExerciseModal = (props: Props) => {
   };
 
   return (
-    <InputDialog visible={props.visible} setVisible={props.setVisible}>
+    <PopupDialog visible={props.visible} setVisible={props.setVisible}>
       <View style={styles.container}>
         <Text style={styles.title}>New Exercise</Text>
         <TextInput
@@ -46,7 +46,7 @@ export const NewExerciseModal = (props: Props) => {
           }}
         />
       </View>
-    </InputDialog>
+    </PopupDialog>
   );
 };
 
