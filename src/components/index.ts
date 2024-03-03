@@ -1,4 +1,4 @@
-export * from './AddButton';
+export * from './Button';
 export * from './Calendar';
 export * from './CheckBox';
 export * from './InputDialog';

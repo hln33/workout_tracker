@@ -1,7 +1,7 @@
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import React from 'react';
 import { SetList } from './SetList';
-import { AddButton } from '@Components';
+import { Button } from '@Components';
 import { useCurrentWorkout } from '@Contexts';
 import { Set } from '@Types';
 import { getCurrentWorkoutSets } from '@Utils';
@@ -25,7 +25,7 @@ export const ExerciseDisplay = (props: Props) => {
       <Text style={styles.exerciseName}>{props.name}</Text>
 
       <SetList name={props.name} sets={exerciseSets} />
-      <AddButton
+      <Button
         onAdd={() => {
           updateWorkoutSets([
             ...exerciseSets,
