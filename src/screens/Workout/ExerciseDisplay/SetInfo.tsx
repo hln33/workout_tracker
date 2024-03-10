@@ -10,7 +10,7 @@ import React from 'react';
 import {
   CheckBox,
   ListRow,
-  NumericBox,
+  InputBox,
   NumericInput,
   Slidable,
 } from '@Components';
@@ -75,23 +75,20 @@ export const SetInfo = (props: Props) => {
       underflowText={'Delete'}
     >
       <ListRow>
-        <NumericBox style={[props.columnStyle]} width={20}>
+        <InputBox style={[props.columnStyle]} width={20}>
           <Text>{id + 1}</Text>
-        </NumericBox>
+        </InputBox>
 
-        <NumericBox style={[props.columnStyle]} width={50}>
+        <InputBox style={[props.columnStyle]} width={50}>
           <NumericInput
             placeholder={weight}
-            onChangeText={(e) => onWeightUpdate(e)}
+            onChange={(e) => onWeightUpdate(e)}
           />
-        </NumericBox>
+        </InputBox>
 
-        <NumericBox style={props.columnStyle} width={50}>
-          <NumericInput
-            placeholder={reps}
-            onChangeText={(e) => onRepsUpdate(e)}
-          />
-        </NumericBox>
+        <InputBox style={props.columnStyle} width={50}>
+          <NumericInput placeholder={reps} onChange={(e) => onRepsUpdate(e)} />
+        </InputBox>
 
         <View style={props.columnStyle}>
           <CheckBox

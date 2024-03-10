@@ -6,7 +6,7 @@ interface Props {
   width: number;
   style?: StyleProp<ViewStyle>;
 }
-export const NumericBox = (props: Props) => {
+export const InputBox = (props: Props) => {
   return (
     <View style={props.style}>
       <View style={[styles.box, { width: props.width }]}>{props.children}</View>
